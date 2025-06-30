@@ -76,3 +76,13 @@
     font-size: 0.9rem;
     color: #bdc3c7;
 }
+
+
+
+@media (max-width: 768px){
+    footer-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+}
