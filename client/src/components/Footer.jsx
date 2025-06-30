@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/footer.css"
 const Footer = () => {
   return (
     <footer className="footer">
@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Contact</h3>
           <p>📧 neeleshabhishek01@gmail.com</p>
-          <p>📱 +91 12345 67890</p>
+          <p>📱 +91 12545 67890</p>
           <p>🌍 Lovely Professional University ,Phagwara , Punjab</p>
         </div>
 
