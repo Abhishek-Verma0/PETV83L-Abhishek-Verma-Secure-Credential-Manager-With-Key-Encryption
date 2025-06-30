@@ -61,21 +61,21 @@
     transition: var(--transition);
 }
 
-.nav-menu .login-btn{
+.nav-menu .btn-primary{
     background-color: var(--primary-color);
     color: white;
 }
-.nav-menu .login-btn:hover{
+.nav-menu .btn-primary:hover{
     background-color: var(--primary-hover);
 }
 
-.nav-menu .register-btn{
+.nav-menu .btn-secondary{
     background: transparent;
     color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
 }
 
-.nav-menu .register-btn:hover{
+.nav-menu .btn-secondary:hover{
     background: var(--secondary-hover);
     color: white;
 }
