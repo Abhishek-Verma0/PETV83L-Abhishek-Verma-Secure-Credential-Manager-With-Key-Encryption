@@ -1,5 +1,10 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Landing from "./pages/Landing";
@@ -31,16 +36,31 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="/register" element={
-              <ProtectedRoute authRequired={false}>
-                <Register />
-              </ProtectedRoute>
-            } />
-            <Route path="/dashboard" element={
-              <ProtectedRoute authRequired={true}>
-                <Dashboard/>
-              </ProtectedRoute>
-            } />
+            <Route
+              path="/register"
+              element={
+                <ProtectedRoute authRequired={false}>
+                  <Register />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute authRequired={true}>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            {/* redirecting all unknown route to dashboard if logged in  if not logged in redirect to landing  */}
+            <Route
+              path="*"
+              element={
+                <ProtectedRoute authRequired={false}>
+                  <Navigate to="/" replace />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </AuthProvider>
