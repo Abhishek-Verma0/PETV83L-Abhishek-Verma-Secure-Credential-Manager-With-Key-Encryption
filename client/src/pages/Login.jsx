@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import FormInput from "../components/FormInput";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../auth/AuthContext";
 const Login = () => {
-  const Login = () => {
+  
     const [formData, setFormData] = useState({
       username: "",
       password: "",
     });
     const [error, setError] = useState("");
-    const { login: authLogin } = useAuth();
+    const { login: authLogin } = useAuth;
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({
@@ -32,7 +32,7 @@ const Login = () => {
         setError(err.message || "Failed to login");
       }
     };
-  };
+  
 
   return (
     <div className="auth-container">
@@ -47,15 +47,22 @@ const Login = () => {
             value={formData.username}
             onChange={handleChange}
             required
-                  />
-                  <FormInput label="password" type="password" name="password" value={formData.password} onChange={handleChange} required />
-                  <Button type="submit" fullwidth>
-                      Login
-                  </Button>
-              </form>
-              <p className="auth-link">
-                  Don't have an account? <Link to="/register">Register</Link>
-              </p>
+          />
+          <FormInput
+            label="password"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <Button type="submit" fullwidth>
+            Login
+          </Button>
+        </form>
+        <p className="auth-link">
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </div>
     </div>
   );
