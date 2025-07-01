@@ -3,6 +3,8 @@ import {Link, useNavigate} from "react-router-dom"
 
 import Button from '../components/Button'
 import FormInput from '../components/FormInput'
+import { useAuth } from '../auth/AuthContext'
+import { register } from '../service/auth'
 
 const Register = () => {
     const [formData, setFormData] = useState({
