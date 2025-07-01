@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/formInput.css";
 const FormInput = ({
   label,
   type = "text",
@@ -32,8 +32,8 @@ const FormInput = ({
         //    disabling copy paste or cut
         onPaste={(e) => e.preventDefault()}
         onCopy={(e) => e.preventDefault()}
-              onCut={(e) => e.preventDefault()}
-            //  this for avoiding password manager autofill  
+        onCut={(e) => e.preventDefault()}
+        //  this for avoiding password manager autofill
         data-lpignore="true"
         data-form-type="other"
       />

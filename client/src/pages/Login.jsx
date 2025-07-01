@@ -3,6 +3,8 @@ import FormInput from "../components/FormInput";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
+
+import "../styles/login.css"
 const Login = () => {
   
     const [formData, setFormData] = useState({
