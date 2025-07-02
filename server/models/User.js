@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const bcrypt = require("crypto")
-
+const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema(
     {
@@ -34,4 +34,26 @@ const userSchema = new mongoose.Schema(
         timestamps:true,
     }
 )
+
+//  generatin salt and the hash password before saving
+
+
+userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
+
+    try {
+        //  generate a new salt when password change 
+        this.salt = crypto.randomBytes(16).toString("hex");
+
+        //  hashing password with salt
+        const hashedPassword = await bcrypt.hash(this.password + this.salt, 10);
+        this.password = hashedPassword;
+        next();
+
+    } catch (error) {
+        next(error);
+    }
+    
+});
+
 
