@@ -12,4 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//   connecting to the mongo db
+
 mongoose.connect(process.env.MONGODB_URL).then(() => console.log("Connected to mongo db")).catch((err) => console.error("Mongo connection falied with error: ", err));
+
+
