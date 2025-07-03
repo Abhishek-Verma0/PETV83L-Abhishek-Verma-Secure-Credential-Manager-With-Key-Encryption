@@ -1,0 +1,1 @@
+//  this is to check whether     user is logged in by checking JWT token  in short it is authentication middleware

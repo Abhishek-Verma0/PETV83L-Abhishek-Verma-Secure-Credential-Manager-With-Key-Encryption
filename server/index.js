@@ -17,3 +17,5 @@ app.use(express.json());
 mongoose.connect(process.env.MONGODB_URL).then(() => console.log("Connected to mongo db")).catch((err) => console.error("Mongo connection falied with error: ", err));
 
 
+
+
