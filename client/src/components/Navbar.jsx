@@ -11,7 +11,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="nav-logo">
-          <Link to={isAuthenticated ? "/dashboard" : "/"}>SecureCreds</Link>
+          <Link to={isAuthenticated ? "/dashboard" : "/"}>🔐 SecureCreds</Link>
         </div>
 
         <div className="nav-menu">
