@@ -1,0 +1,57 @@
+/* Screenshot Prevention Styles - Temporarily disabled for testing */
+/*
+.screenshot-protected {
+  isolation: isolate;
+  mix-blend-mode: normal;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+.screenshot-protected::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 2147483647;
+  mix-blend-mode: difference;
+}
+
+/* Prevent selection */
+.screenshot-protected,
+.screenshot-protected * {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* Hide content during print attempts */
+@media print {
+    .screenshot-protected {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        display: none !important;
+    }
+}
+
+/* Hide content during screen capture */
+@media (screen-capture: true) {
+    .screenshot-protected {
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
+
+/* Additional layer of protection */
+.screenshot-protected {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 100%);
+}
+
+*/
