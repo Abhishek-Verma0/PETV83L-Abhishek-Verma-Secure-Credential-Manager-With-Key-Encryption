@@ -9,7 +9,7 @@ import {
   deleteCredential,
   getCredential,
 } from "../service/credentials";
-import PasswordPrompt from "../components/PasswordPrompt";
+import PasswordPrompt from '../components/PasswordPrompt'
 import ScreenshotPrevention from "../components/ScreenshotPrevention";
 import "../styles/screenshotPrevention.css";
 import '../styles/dashboard.css'
