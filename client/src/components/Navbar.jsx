@@ -5,7 +5,9 @@ import { useAuth } from "../auth/AuthContext";
 import Button from "./Button";
 const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
-
+  const handleLogout = () => {
+    logout();
+  };
   const navigate = useNavigate();
   return (
     <>
