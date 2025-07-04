@@ -63,7 +63,7 @@ export const verifyPassword = async (password) => {
             throw new Error("Password is required");
         }
         const response = await api.post("/auth/verify-password", { password });
-        return response.data.isvalid  ?? false;
+        return response.data.isValid  ?? false;
     } catch (error) {
         console.error("verify pass err",error)
         throw error.response?.data?.message || "Password verification failed";

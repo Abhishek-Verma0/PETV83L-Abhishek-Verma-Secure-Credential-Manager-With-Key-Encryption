@@ -60,7 +60,7 @@ const Register = () => {
               
               <form onSubmit={handleSubmit} >
                   <FormInput
-                      label='Username'
+                      label='Username at least 5 character long'
                       value={formData.username}
                       onChange={handleChange}
                       name="username"
