@@ -39,7 +39,7 @@ const PasswordPrompt = ({ onSubmit, onCancel, action = "save" }) => {
   const handleCancel = () => {
     setPassword("");
     setError("");
-    setSuccess("");
+    setSuccess(false);
     onCancel("");
   };
 
