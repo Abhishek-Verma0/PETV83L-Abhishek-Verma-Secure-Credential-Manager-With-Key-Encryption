@@ -21,10 +21,12 @@ mongoose
 //  imorting routes
 
 const authRoutes = require("./routes/auth");
+const credentialRoutes= require("./routes/credentials")
 
 //  use routes
 
 app.use("/api/auth", authRoutes);
+app.use("/api/credentials",credentialRoutes)
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
