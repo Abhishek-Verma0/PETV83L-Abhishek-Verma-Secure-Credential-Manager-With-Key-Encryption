@@ -21,7 +21,10 @@ api.interceptors.request.use((config) => {
 export const register = async (username, email, password) => {
     try {
         if (!username || !email || !password) {
-            throw new Error("Password must be at least 6 characters long");
+            throw new Error("All fields are required");
+        }
+        if (password.length < 8) {
+            throw new Error("Password must be at least 8 characters long");
         }
         const response = await api.post("/auth/register", {
             username,
@@ -30,6 +33,7 @@ export const register = async (username, email, password) => {
         });
         return response.data;
     } catch (error) {
+        console.error("Registraton error: ",error)
         throw error.response?.data?.message || "Registration failed";
     }
 };
@@ -38,13 +42,16 @@ export const register = async (username, email, password) => {
 
 export const login = async (username, password) => {
     try {
-        if (!username || password) {
-            throw new Error("Username and passwrd are required");
+        if (!username || !password) {
+            throw new Error("Username and password are required");
         }
         const response = await api.post("/auth/login", { username, password });
         return response.data;
 
     } catch (error) {
+
+        console.error("Login error",error)
+
         throw error.response?.data?.message || "Login failed";
     }
 };
@@ -56,8 +63,9 @@ export const verifyPassword = async (password) => {
             throw new Error("Password is required");
         }
         const response = await api.post("/auth/verify-password", { password });
-        return response.data.isvalid;
+        return response.data.isvalid  ?? false;
     } catch (error) {
+        console.error("verify pass err",error)
         throw error.response?.data?.message || "Password verification failed";
     }
 };
