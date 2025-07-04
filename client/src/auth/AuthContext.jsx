@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     if (token && userId) {
       setUser({ token, userId });
       // if user logged in and on anyother route redirect him to dashboard
-      if (["/", "/login", "/register"].includes(location.pathname)) {
+      if (["/", "/login", "/register"].includes(location.pathname) && location.pathname !== "/dashboard") {
         navigate("/dashboard");
       }
     } else if (location.pathname === "/dashboard") {
