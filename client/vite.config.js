@@ -9,21 +9,21 @@ export default defineConfig(({ mode }) => {
   const config = {
     plugins: [react()],
     server: {
-      hsot: true,
-      port: process.env.PORT,
+      host: true,
+      port: process.env.VITE_PORT,
       strictPort: false,
 
       proxy: {
         "/api": {
           target: env.VITE_API_URL,
-          changeOroigin: true,
+          changeOrigin: true,
           secure: false,
         },
       },
     },
     preview: {
       host: true,
-      port: process.env.PORT,
+      port: process.env.VITE_PORT,
       strictPort: false,
     },
   };
