@@ -3,8 +3,9 @@ import FormInput from "../components/FormInput";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
-
+import {login} from "../service/auth"
 import "../styles/login.css"
+
 const Login = () => {
   
     const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ const Login = () => {
       password: "",
     });
     const [error, setError] = useState("");
-    const { login: authLogin } = useAuth;
+    const { login: authLogin } = useAuth();
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({
@@ -51,14 +52,14 @@ const Login = () => {
             required
           />
           <FormInput
-            label="password"
+            label="Password"
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
             required
           />
-          <Button type="submit" fullwidth>
+          <Button type="submit" fullWidth>
             Login
           </Button>
         </form>
