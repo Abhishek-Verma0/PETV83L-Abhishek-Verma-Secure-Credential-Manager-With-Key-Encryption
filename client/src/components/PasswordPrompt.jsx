@@ -6,8 +6,8 @@ import "../styles/passwordPrompt.css";
 const PasswordPrompt = ({ onSubmit, onCancel, action = "save" }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [isVerifying, setIsVerifying] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
   const { startCredentialViewTimer } = useAuth();
 
   const handleSubmit = async (e) => {
