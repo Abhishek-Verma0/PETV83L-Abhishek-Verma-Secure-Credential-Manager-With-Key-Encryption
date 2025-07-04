@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import FormInput from "../components/FormInput";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../auth/AuthContext";
 import {
   getCredentials,
   createCredential,
   deleteCredential,
   getCredential,
-} from "../services/credentials";
+} from "../service/credentials";
 import PasswordPrompt from "../components/PasswordPrompt";
 import ScreenshotPrevention from "../components/ScreenshotPrevention";
 import "../styles/screenshotPrevention.css";
