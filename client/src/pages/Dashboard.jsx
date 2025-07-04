@@ -12,7 +12,7 @@ import {
 import PasswordPrompt from "../components/PasswordPrompt";
 import ScreenshotPrevention from "../components/ScreenshotPrevention";
 import "../styles/screenshotPrevention.css";
-
+import '../styles/dashboard.css'
 const Dashboard = () => {
   const [credentials, setCredentials] = useState([]);
   const [error, setError] = useState("");
