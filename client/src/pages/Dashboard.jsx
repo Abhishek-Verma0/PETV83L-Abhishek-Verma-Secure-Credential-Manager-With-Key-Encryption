@@ -259,10 +259,10 @@ const Dashboard = () => {
                   </div>
                 ) : null}
                 <div className="button-group">
-                  <Button variant="primary" onClick={() => initiateView(cred)}>
+                  <Button className="btn1" variant="primary" onClick={() => initiateView(cred)}>
                     View
                   </Button>
-                  <Button variant="danger" onClick={() => initiateDelete(cred)}>
+                  <Button className="btn1" variant="danger" onClick={() => initiateDelete(cred)}>
                     Delete
                   </Button>
                 </div>
