@@ -34,6 +34,17 @@ app.get("/favicon.ico", (req, res) => res.status(204).end());
 app.get("/", (req, res) => {
   res.send("Server is running ✅");
 });
+
+
+
+
+const __dirname1 = path.resolve();
+app.use(express.static(path.join(__dirname1, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname1, "../client/build/index.html"));
+});
+
 const PORT = process.env.PORT;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
