@@ -6,9 +6,6 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "engines": {
     "node": "20.14.0"
   },
