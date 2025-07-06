@@ -3,7 +3,7 @@ import axios from "axios";
 //  url for api request - done by vite
 
 const api = axios.create({
-    baseURL: "/api",
+    baseURL: import.meta.env.VITE_API_URL+"/api",
     
 });
 

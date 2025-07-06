@@ -2,7 +2,7 @@ import axios from "axios";
 import { verifyPassword } from "./auth";
 
 // Using proxy configured in vite.config.js
-const API_URL = "/api";
+const API_URL = import.meta.env.VITE_API_URL+"/api";
 
 // Create axios instance with auth header
 const authAxios = axios.create({
