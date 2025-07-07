@@ -13,6 +13,7 @@ import PasswordPrompt from '../components/PasswordPrompt'
 import ScreenshotPrevention from "../components/ScreenshotPrevention";
 import "../styles/screenshotPrevention.css";
 import '../styles/dashboard.css'
+import '../styles/responsive.css'
 const Dashboard = () => {
   const [credentials, setCredentials] = useState([]);
   const [error, setError] = useState("");

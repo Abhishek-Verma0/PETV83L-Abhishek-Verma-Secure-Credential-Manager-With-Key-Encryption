@@ -1,5 +1,5 @@
 /* Screenshot Prevention Styles - Temporarily disabled for testing */
-/*
+
 .screenshot-protected {
   isolation: isolate;
   mix-blend-mode: normal;

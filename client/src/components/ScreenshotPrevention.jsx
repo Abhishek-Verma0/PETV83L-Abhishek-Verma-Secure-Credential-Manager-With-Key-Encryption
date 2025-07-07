@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const ScreenshotPrevention = () => {
   // Prevention logic temporarily disabled for testing
-  /*
+  
   useEffect(() => {
     // Prevent screen capture
     const style = document.createElement("style");
@@ -60,7 +60,7 @@ const ScreenshotPrevention = () => {
       window.removeEventListener("contextmenu", handleContextMenu);
     };
   }, []);
-  */
+ 
 
   return null;
 };

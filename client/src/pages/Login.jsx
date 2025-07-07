@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import {login} from "../service/auth"
 import "../styles/login.css"
+import "../styles/responsive.css"
 
 const Login = () => {
   

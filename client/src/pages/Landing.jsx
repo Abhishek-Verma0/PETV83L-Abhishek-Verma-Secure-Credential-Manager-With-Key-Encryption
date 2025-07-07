@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import '../styles/landingPage.css';
 import Footer from "../components/Footer";
+import '../styles/responsive.css'
 const Landing = () => {
   return (
     <div className="landing-page">

@@ -6,6 +6,7 @@ import FormInput from '../components/FormInput'
 import { useAuth } from '../auth/AuthContext'
 import { register } from '../service/auth'
 import "../styles/register.css"
+import "../styles/responsive.css"
 const Register = () => {
     const [formData, setFormData] = useState({
         username: "",

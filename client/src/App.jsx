@@ -13,6 +13,7 @@ import { AuthProvider } from "./auth/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import './styles/responsive.css'
 const App = () => {
   return (
     <Router>
