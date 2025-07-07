@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <!-- Lock body with gradient -->
+        <path fill="#2196F3" d="M8,14 L24,14 C25.1045695,14 26,14.8954305 26,16 L26,26 C26,27.1045695 25.1045695,28 24,28 L8,28 C6.8954305,28 6,27.1045695 6,26 L6,16 C6,14.8954305 6.8954305,14 8,14 Z"/>
+        
+        <!-- Lock shackle -->
+        <path d="M10,14 L10,10 C10,6.6862915 12.6862915,4 16,4 C19.3137085,4 22,6.6862915 22,10 L22,14" stroke="#1976D2" stroke-width="2.5" stroke-linecap="round"/>
+        
+        <!-- Keyhole -->
+        <circle fill="#1976D2" cx="16" cy="21" r="2"/>
+        <rect fill="#1976D2" x="15" y="21" width="2" height="4"/>
+    </g>
+</svg> 
