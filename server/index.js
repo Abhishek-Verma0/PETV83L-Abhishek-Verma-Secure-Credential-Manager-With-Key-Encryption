@@ -38,12 +38,12 @@ app.get("/", (req, res) => {
 
 //  for deployment 
 
-// const __dirname1 = path.resolve();
-// app.use(express.static(path.join(__dirname1, "../client/build")));
+const __dirname1 = path.resolve();
+app.use(express.static(path.join(__dirname1, "../client/dist")));
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname1, "../client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname1, "../client/dist/index.html"));
+});
 const PORT = process.env.PORT;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
