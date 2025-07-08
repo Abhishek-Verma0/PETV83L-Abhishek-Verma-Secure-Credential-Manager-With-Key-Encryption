@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const path =require("path")
+const path = require("path");
 dotenv.config();
 
 const app = express();
@@ -21,29 +21,33 @@ mongoose
 //  imorting routes
 
 const authRoutes = require("./routes/auth");
-const credentialRoutes= require("./routes/credentials")
+const credentialRoutes = require("./routes/credentials");
 
 //  use routes
 
 app.use("/api/auth", authRoutes);
-app.use("/api/credentials",credentialRoutes)
+app.use("/api/credentials", credentialRoutes);
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 // port decided by hosting platform
-app.get("/", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.send("Server is running ✅");
 });
 
+//  for deployment
 
-//  for deployment 
+if (process.env.NODE_ENV === "production") {
+  const __dirname1 = path.resolve();
+  const clientPath = path.join(__dirname1, "../client/dist");
 
-const __dirname1 = path.resolve();
-app.use(express.static(path.join(__dirname1, "../client/dist")));
+  app.use(express.static(clientPath));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname1, "../client/dist/index.html"));
-});
+  app.get("*", (req, res) => {
+    if (!req.url.startsWith("/api"))
+      res.sendFile(path.join(clientPath, "index.html"));
+  });
+}
 const PORT = process.env.PORT;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
