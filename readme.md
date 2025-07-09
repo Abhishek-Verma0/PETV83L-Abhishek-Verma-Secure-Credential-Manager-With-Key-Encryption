@@ -117,10 +117,13 @@ npm install
 
 # Setup environment variables
 # Add your MongoDB URI and JWT_SECRET in the .env file
-    MONGODB_URL
-    JWT_SECRET
-    VITE_API_URL
-    PORT
+  # Server .env
+    MONGODB_URL=your mongo url
+    JWT_SECRET= your jwt secret
+    PORT=5000
+  # client .env
+   VITE_API_URL= http://localhost:5000/
+   VITE_PORT=5173
 
 # Start backend server
 npm run dev
