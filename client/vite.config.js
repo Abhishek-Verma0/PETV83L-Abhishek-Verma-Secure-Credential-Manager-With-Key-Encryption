@@ -9,11 +9,11 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     server: {
       host: true,
-      port: process.env.VITE_PORT || 5173,
+      port: process.env.VITE_PORT,
       strictPort: false,
       proxy: {
         "/api": {
-          target: process.env.VITE_API_URL,
+          target: env.VITE_API_URL,
           changeOrigin: true,
           secure: false,
         },
@@ -21,19 +21,8 @@ export default defineConfig(({ mode }) => {
     },
     preview: {
       host: true,
-      port: process.env.VITE_PORT || 5173,
+      port: env.VITE_PORT ,
       strictPort: false,
-    },
-    build: {
-      outDir: "dist",
-      target: "esnext",
-      minify: false,
-      emptyOutDir: true,
-      rollupOptions: {
-        output: {
-          manualChunks: undefined,
-        },
-      },
     },
   };
   return config;

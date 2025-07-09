@@ -37,17 +37,17 @@ app.get("/api/health", (req, res) => {
 
 //  for deployment
 
-if (process.env.NODE_ENV === "production") {
-  const __dirname1 = path.resolve();
-  const clientPath = path.join(__dirname1, "../client/dist");
+// if (process.env.NODE_ENV === "production") {
+//   const __dirname1 = path.resolve();
+//   const clientPath = path.join(__dirname1, "../client/dist");
 
-  app.use(express.static(clientPath));
+//   app.use(express.static(clientPath));
 
-  app.get("*", (req, res) => {
-    if (!req.url.startsWith("/api"))
-      res.sendFile(path.join(clientPath, "index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     if (!req.url.startsWith("/api"))
+//       res.sendFile(path.join(clientPath, "index.html"));
+//   });
+// }
 const PORT = process.env.PORT;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
