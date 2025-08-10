@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://gssoc.girlscript.tech/">
+    <img src="https://img.shields.io/badge/GSSoC-2025-orange" alt="GSSoC 2025 Badge" />
+  </a>
+</p>
+
+
 # 🔐 Secure Credential Manager
 ## Make sure to star the repo before working on
 A **Secure Credential Manager** built using the **MERN stack (MongoDB, Express, React, Node.js)** with advanced cryptographic features to ensure maximum security. It uses `CryptoJS` and `bcrypt` for encryption and hashing, and `JWT` for session management.
