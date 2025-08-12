@@ -1,8 +1,10 @@
+// src/components/PasswordPrompt.jsx
 import React, { useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 import FormInput from "./FormInput";
 import Button from "./Button";
 import "../styles/passwordPrompt.css";
+
 const PasswordPrompt = ({ onSubmit, onCancel, action = "save" }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -22,14 +24,14 @@ const PasswordPrompt = ({ onSubmit, onCancel, action = "save" }) => {
       await onSubmit(password);
       setPassword("");
       setSuccess(true);
-      //  close the prompt after showin success message
+      // close the prompt after showing success message
       setTimeout(() => {
         setSuccess(false);
         onCancel();
       }, 1000);
     } catch (err) {
-      setError(err.message || "Failed to verify password. Pleaase try again.");
-      //  auto-clear error message after 3 sec
+      setError(err.message || "Failed to verify password. Please try again.");
+      // auto-clear error message after 3 sec
       setTimeout(() => setError(""), 3000);
     } finally {
       setIsVerifying(false);
@@ -46,28 +48,24 @@ const PasswordPrompt = ({ onSubmit, onCancel, action = "save" }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h3>Enter Your Password</h3>
-        <p>Please enter your password to {action} this credential securely. </p>
+        <div className="modal-header">
+          <h3>Enter Your Password</h3>
+          <p>Please enter your password to {action} this credential securely.</p>
+        </div>
+
         {error && (
-          <div
-            className="error-alert"
-            style={{
-              margin: "10px 0",
-              padding: "10px",
-              borderRadius: "4px",
-              backgroundColor: "#ffebee",
-              color: "#c62828",
-              border: "1px solid #ffcdd2",
-            }}
-          >
+          <div className="alert alert-error">
             {error}
           </div>
         )}
+        
         {success && (
-          <div className="success-alert">Password verified successfully!</div>
+          <div className="alert alert-success">
+            Password verified successfully!
+          </div>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="password-form">
           <FormInput
             label="Your Password"
             type="password"

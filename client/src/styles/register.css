@@ -1,3 +1,12 @@
+/* src/styles/register.css */
+/* Use the same styles as login.css since they share the same structure */
+@import './login.css';
+
+/* Any register-specific overrides can go here */
+.auth-box {
+  max-width: 450px; /* Slightly wider for register form */
+}
+
 :root {
     --primary-color: #3498db;
     --primary-hover: #2980b9;

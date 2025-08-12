@@ -1,0 +1,146 @@
+/* src/components/ThemeToggle.css */
+.theme-toggle {
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-secondary);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px var(--shadow);
+  border-color: var(--accent-color);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(64, 171, 247, 0.3);
+}
+
+.theme-toggle:active {
+  transform: scale(0.98);
+}
+
+.toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.theme-toggle:hover .toggle-icon {
+  transform: rotate(15deg);
+}
+
+/* Icon styling for better visibility */
+.toggle-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: all 0.3s ease;
+}
+
+/* Light mode icon (moon) styling */
+.theme-toggle:not(.dark-mode) .toggle-icon svg {
+  color: #6c757d;
+}
+
+.theme-toggle:not(.dark-mode):hover .toggle-icon svg {
+  color: var(--accent-color);
+}
+
+/* Dark mode icon (sun) styling */
+.theme-toggle.dark-mode .toggle-icon svg {
+  color: #ffd43b;
+}
+
+.theme-toggle.dark-mode:hover .toggle-icon svg {
+  color: #ffec8b;
+}
+
+/* Subtle animation for theme switching */
+@keyframes themeSwitch {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.theme-toggle.switching {
+  animation: themeSwitch 0.3s ease;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .toggle-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .toggle-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .theme-toggle {
+    border-width: 2px;
+  }
+  
+  .theme-toggle:hover {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .toggle-icon,
+  .toggle-icon svg {
+    transition: none;
+  }
+  
+  .theme-toggle:hover .toggle-icon {
+    transform: none;
+  }
+  
+  .theme-toggle.switching {
+    animation: none;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}

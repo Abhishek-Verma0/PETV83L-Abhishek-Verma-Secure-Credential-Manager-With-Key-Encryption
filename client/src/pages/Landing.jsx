@@ -1,10 +1,15 @@
+// src/pages/Landing.jsx
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../contexts/ThemeContext";
 import Button from "../components/Button";
 import '../styles/landingPage.css';
 import Footer from "../components/Footer";
-import '../styles/responsive.css'
+import '../styles/responsive.css';
+
 const Landing = () => {
+  const { isDarkMode } = useTheme();
+
   return (
     <div className="landing-page">
       {/* hero */}
@@ -26,8 +31,8 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      {/*  about section */}
 
+      {/* about section */}
       <section id="about" className="about-section">
         <div className="section-content">
           <h2>Why Choose Secure-Creds?</h2>
@@ -41,7 +46,6 @@ const Landing = () => {
       </section>
 
       {/* feature section */}
-
       <section id="features" className="features-section">
         <div className="features-content">
           <h2>Key Features</h2>
@@ -62,11 +66,22 @@ const Landing = () => {
               <h3>📱 Cross-Platform</h3>
               <p>Access your credentials from any device, anywhere</p>
             </div>
+            <div className="feature">
+              <h3>🌙 Dark Mode Support</h3>
+              <p>
+                Enjoy a comfortable viewing experience with our {isDarkMode ? 'beautiful dark' : 'sleek light'} theme. 
+                Switch anytime with the toggle in the navbar!
+              </p>
+            </div>
+            <div className="feature">
+              <h3>🔄 Real-time Sync</h3>
+              <p>Your data stays synchronized across all your devices</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/*  security section */}
+      {/* security section */}
       <section className="security-section">
         <div className="security-content">
           <h2>Bank-Grade Security</h2>
@@ -80,7 +95,7 @@ const Landing = () => {
               <p>Continuous monitoring and security updates</p>
             </div>
             <div className="security-point">
-              <h3>👤 Two-Factor Authentication -Coming Soon</h3>
+              <h3>👤 Two-Factor Authentication - Coming Soon</h3>
               <p>Extra layer of security for your account</p>
             </div>
           </div>
@@ -88,7 +103,6 @@ const Landing = () => {
       </section>
 
       {/* contact section */}
-
       <section id="contact" className="contact-section">
         <div className="contact-content">
           <h2>Get in Touch</h2>
@@ -102,8 +116,8 @@ const Landing = () => {
             </Button>
           </Link>
         </div>
-          </section>
-          <Footer/>
+      </section>
+      <Footer />
     </div>
   );
 };

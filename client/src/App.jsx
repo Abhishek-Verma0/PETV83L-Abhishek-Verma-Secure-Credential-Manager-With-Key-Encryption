@@ -1,3 +1,4 @@
+// src/App.jsx
 import React from "react";
 import {
   Navigate,
@@ -13,7 +14,9 @@ import { AuthProvider } from "./auth/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import './styles/responsive.css'
+import './styles/responsive.css';
+import './styles/global.css';
+
 const App = () => {
   return (
     <Router>
@@ -53,7 +56,6 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            {/* redirecting all unknown route to dashboard if logged in  if not logged in redirect to landing  */}
             <Route
               path="*"
               element={

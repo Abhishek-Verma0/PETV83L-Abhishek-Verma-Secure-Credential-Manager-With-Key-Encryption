@@ -1,43 +1,45 @@
-import React from "react";
-import "../styles/formInput.css";
+// src/components/FormInput.jsx
+import React from 'react';
+import './FormInput.css';
+
 const FormInput = ({
   label,
-  type = "text",
+  type = 'text',
   name,
   value,
   onChange,
+  placeholder,
   required = false,
-  placeholder = "",
-  error = "",
+  disabled = false,
+  error,
+  className = '',
+  minLength,
+  maxLength,
+  ...props
 }) => {
-  const id = label.toLowerCase().replace(/\s+/g, "-");
-
   return (
-    <div className="form-group">
-      <label htmlFor={id}>{label}</label>
+    <div className={`form-group ${className}`}>
+      {label && (
+        <label htmlFor={name} className="form-label">
+          {label}
+          {required && <span className="required-asterisk">*</span>}
+        </label>
+      )}
       <input
-        id={id}
-        name={name}
         type={type}
+        id={name}
+        name={name}
         value={value}
         onChange={onChange}
-        required={required}
         placeholder={placeholder}
-        className={`form-input ${error ? "error" : ""}`}
-        //   preventing autofill kind of thing
-        autoComplete="off"
-        autoCorrect="off"
-        autoCapitalize="off"
-        spellCheck="off"
-        //    disabling copy paste or cut
-        onPaste={(e) => e.preventDefault()}
-        onCopy={(e) => e.preventDefault()}
-        onCut={(e) => e.preventDefault()}
-        //  this for avoiding password manager autofill
-        data-lpignore="true"
-        data-form-type="other"
+        required={required}
+        disabled={disabled}
+        minLength={minLength}
+        maxLength={maxLength}
+        className={`form-input ${error ? 'form-input-error' : ''}`}
+        {...props}
       />
-      {error && <span className="error-message">{error}</span>}
+      {error && <span className="form-error">{error}</span>}
     </div>
   );
 };
