@@ -20,6 +20,7 @@ const Register = () => {
     const [success, setSuccess] = useState("");
     const navigate = useNavigate();
     const { login } = useAuth();
+    const [agreeTerms, setAgreeTerms]=useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,7 +38,10 @@ const Register = () => {
             setError("Passwords do not match");
             return;
         }
-
+        if (!agreeTerms) {
+        setError("Please agree to the Terms of Use & Privacy Policy");
+        return;
+        }
         try {
             await register(formData.username, formData.email, formData.password);
             setSuccess("Registration successful! Redirecting to login...");
@@ -102,6 +106,14 @@ const Register = () => {
                   Already have an account? <Link to="/login">Login</Link>
               </p>
 
+            <div class="termsandconditions">
+                <input type="checkbox" id="terms" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)}/>
+                <label for="terms">
+                    By continuing, I agree to the
+                    <span class="link">Terms of Use </span> &
+                    <span class="link"> Privacy Policy</span>
+                </label>
+            </div>
           </div>
           
     </div>
