@@ -13,24 +13,35 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
+    const userInfo = localStorage.getItem("userInfo");
 
     if (token && userId) {
-      setUser({ token, userId });
+      const parsedUserInfo = userInfo ? JSON.parse(userInfo) : {};
+      setUser({ 
+        token, 
+        userId, 
+        ...parsedUserInfo 
+      });
       // if user logged in and on anyother route redirect him to dashboard
       if (["/", "/login", "/register"].includes(location.pathname) && location.pathname !== "/dashboard") {
         navigate("/dashboard");
       }
-    } else if (location.pathname === "/dashboard") {
+    } else if (location.pathname === "/dashboard" || location.pathname === "/mfa") {
       // if no any token or it is expired then send to login page
       navigate("/login");
     }
     setLoading(false);
   }, [navigate, location]);
 
-  const login = (token, userId) => {
+  const login = (token, userId, userInfo = {}) => {
     localStorage.setItem("token", token);
     localStorage.setItem("userId", userId);
-    setUser({ token, userId });
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    setUser({ 
+      token, 
+      userId, 
+      ...userInfo 
+    });
     navigate("/dashboard");
   };
 
@@ -38,6 +49,11 @@ export const AuthProvider = ({ children }) => {
     localStorage.clear();
     setUser(null);
     navigate("/login");
+  };
+
+  const updateUserInfo = (userInfo) => {
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    setUser(prev => ({ ...prev, ...userInfo }));
   };
 
   //prevent rendder till authorisation is done
@@ -50,6 +66,7 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated: !!user,
     login,
     logout,
+    updateUserInfo,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

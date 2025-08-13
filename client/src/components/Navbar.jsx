@@ -18,9 +18,14 @@ const Navbar = () => {
 
         <div className="nav-menu">
           {isAuthenticated ? (
-            <Button onClick={handleLogout} variant="secondary">
-              Logout
-            </Button>
+            <div className="nav-authenticated">
+              <Link to="/mfa" className="nav-link">
+                🔐 MFA Settings
+              </Link>
+              <Button onClick={handleLogout} variant="secondary">
+                Logout
+              </Button>
+            </div>
           ) : (
             <>
               <Link to="/login" className="btn btn-primary">

@@ -9,11 +9,19 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Landing from "./pages/Landing";
 import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import { AuthProvider } from "./auth/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import MFAPage from "./pages/MFAPage";
+import QRCodeTest from "./components/QRCodeTest";
+import SimpleQRTest from "./components/SimpleQRTest";
+import MFATestPage from "./components/MFATestPage";
+import QuickLogin from "./components/QuickLogin";
 import './styles/responsive.css'
+
 const App = () => {
   return (
     <Router>
@@ -46,12 +54,52 @@ const App = () => {
               }
             />
             <Route
+              path="/forgot-password"
+              element={
+                <ProtectedRoute authRequired={false}>
+                  <ForgotPassword />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/reset-password"
+              element={
+                <ProtectedRoute authRequired={false}>
+                  <ResetPassword />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/dashboard"
               element={
                 <ProtectedRoute authRequired={true}>
                   <Dashboard />
                 </ProtectedRoute>
               }
+            />
+            <Route
+              path="/mfa"
+              element={
+                <ProtectedRoute authRequired={true}>
+                  <MFAPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/test-qr"
+              element={<QRCodeTest />}
+            />
+            <Route
+              path="/simple-qr"
+              element={<SimpleQRTest />}
+            />
+            <Route
+              path="/mfa-test"
+              element={<MFATestPage />}
+            />
+            <Route
+              path="/quick-login"
+              element={<QuickLogin />}
             />
             {/* redirecting all unknown route to dashboard if logged in  if not logged in redirect to landing  */}
             <Route

@@ -47,6 +47,7 @@ router.post("/register", async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
+        mfaEnabled: user.mfaEnabled || false,
       },
     });
   } catch (error) {
@@ -74,7 +75,31 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Create jwt token
+    // Check if MFA is enabled
+    if (user.mfaEnabled) {
+      // Generate pre-auth token
+      const preAuthToken = jwt.sign(
+        { 
+          userId: user._id, 
+          preAuth: true 
+        }, 
+        process.env.JWT_SECRET, 
+        { expiresIn: '10m' }
+      );
+
+      return res.json({
+        requiresMFA: true,
+        mfaMethod: user.mfaMethod,
+        preAuthToken,
+        destination: user.mfaMethod === 'email' 
+          ? user.email.replace(/(.{2})(.*)(@.*)/, '$1***$3')
+          : user.mfaMethod === 'sms'
+          ? user.phoneNumber.replace(/(\+\d{1,3})(\d{3})(\d{3})(\d{4})/, '$1***$4')
+          : null
+      });
+    }
+
+    // Create jwt token for users without MFA
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "15m",
     });
@@ -85,6 +110,7 @@ router.post("/login", async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
+        mfaEnabled: user.mfaEnabled
       },
     });
   } catch (error) {

@@ -47,7 +47,27 @@
 .auth-link{
     margin-top: 20px;
     text-align: center;
-    
+}
+
+.auth-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.auth-separator {
+    color: #ccc;
+}
+
+.auth-description {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 .auth-link a{
@@ -59,14 +79,21 @@
     text-decoration: underline;
 }
 
-
-
+.success-alert {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #c3e6cb;
+}
 
 .error-alert {
     background-color: #fde8e8;
     color: #e74c3c;
     padding: 10px;
     border-radius: 4px;
-    margin-bottom: 20cpx;
+    margin-bottom: 20px;
     text-align: center;
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Test</title>
+</head>
+<body>
+    <h1>QR Code Test</h1>
+    <div id="qr-container">Loading...</div>
+    <div id="debug-info"></div>
+
+    <script type="module">
+        import QRCode from 'https://esm.sh/react-qr-code@2.0.18';
+
+        const testQRData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAADECAYAAADApo5rAAAAAklEQVR4AewaftIAAAj1SURBVO3BQYolyZIAQdUg739lnWIWjq0cgveyu/tjIvYHa63/97DWOh7WWsfDWut4WGsdD2ut42GtdTystY6HtdbxsNY6HtZax8Na63hYax0Pa63jYa11PKy1jh8+pPI3VbyhclPxhspNxaRyUzGpTBU3KlPFpPJGxY3KVHGj8jdVfOJhrXU8rLWOh7XW8cOXVXyTyo3KTcWk8obKVHGjMlX8popJ5aZiUvmEylRxU/FNKt/0sNY6HtZax8Na6/jhl6m8UfFGxY3KVHGj8obKVDGp3FTcqHyi4hMqv0nljYrf9LDWOh7WWsfDWuv44X+MyjdVvKEyVdyovFExqUwVk8pNxU3FpDJV/C95WGsdD2ut42GtdfzwH6cyVUwqk8pNxaQyVdxUTCo3FW+o/CaVqeJGZar4L3tYax0Pa63jYa11/PDLKn5TxRsVNypTxaQyVUwqU8WkMql8omJSmSomlZuKSeWm4hMV/yYPa63jYa11PKy1jh++TOVvUpkq3lCZKiaVqWJSmSomlaliUpkqJpWpYlKZKiaVqeJG5d/sYa11PKy1joe11mF/8D9EZaqYVKaKG5V/UsWk8kbFpPKJiv9lD2ut42GtdTystY4fPqQyVUwqU8WkMlVMKlPFN6ncVNyo3FRMKp+omFRuVKaKG5U3VKaKN1SmihuVqeKbHtZax8Na63hYax0/fJnKVPGJikllqrhReaPijYpJ5aZiUvlNFTcqNxU3FTcqNxU3KlPFpDJVfOJhrXU8rLWOh7XW8cOXVUwqn1B5o2JSuam4UXmjYlKZKqaKG5WpYqr4poo3VKaKqWJSmVRuKiaV3/Sw1joe1lrHw1rrsD/4i1TeqHhD5RMVk8pNxaQyVUwqU8WkMlVMKv+kik+o3FS8oTJVfOJhrXU8rLWOh7XW8cOXqbxRMalMKjcVU8WkclMxqUwVNyqfUHmjYlK5qbhReUNlqphUbipuVKaKv+lhrXU8rLWOh7XW8cOXVUwqb1T8popJZaqYVKaK31RxozJVTCqTyk3FpHJTMalMFZPKN6n8poe11vGw1joe1lqH/cFfpPKJikllqrhReaPiDZWp4hMqv6liUrmpuFG5qXhD5Y2KTzystY6HtdbxsNY6fviQylQxqdxUTCpTxSdUpooblUnljYoblTcqJpVPVEwqNxVvVLyhMlVMFZPKb3pYax0Pa63jYa11/PChijcqJpUblaliqphUpopJZap4o+INlaliUpkqPlExqUwq36TyiYoblZuKb3pYax0Pa63jYa11/PAhlaliqripmFSmikllqnij4qbiRuWm4p+kMlX8TRWTylRxozJV3KhMFZ94WGsdD2ut42GtdfzwoYpJ5Y2KG5U3KiaVqWJSmSreqJhUpoqbikllqripmFQ+oXJTMVW8ofJv9rDWOh7WWsfDWuuwP/iAylQxqbxR8YbKTcUnVKaKb1K5qfiEyt9UcaMyVbyhclPxiYe11vGw1joe1lrHD1+mclMxqdyoTBVTxY3KVDGpTBU3KjcVNyqfUJkqJpU3KiaVm4obld9UMal808Na63hYax0Pa63jhy+rmFQmlaliUpkq3lC5UZkqJpWpYlL5RMWk8kbFTcUbKlPFGyp/k8pvelhrHQ9rreNhrXXYH3xA5Y2KG5VPVEwqU8WNyk3Fv5nKVHGjclPxhspUMan8popPPKy1joe11vGw1jrsDz6gMlVMKp+omFS+qeINlaliUpkqJpWpYlL5myomlU9UTCqfqJhUbio+8bDWOh7WWsfDWuv44ZdVvKEyqUwV36QyVUwqn1CZKiaVm4oblaniRuWNijdUbio+UTGpfNPDWut4WGsdD2utw/7gAypTxW9SmSreUJkqJpWpYlK5qXhD5abiRuWm4kbljYo3VG4q3lCZKr7pYa11PKy1joe11vHDL1OZKiaVNypuVKaKqeKm4p9U8U0qU8VUMam8oTJVTBWTyqQyVUwqf9PDWut4WGsdD2ut44d/WMWkMlXcqNyoTBWTylQxqUwVk8qkMlVMKjcqNxVTxaTyhspNxaQyVUwqU8VUMancVEwqv+lhrXU8rLWOh7XW8cMvq3ijYlJ5o2JSmVSmikllqphUPlFxozJV3KjcVEwqb6h8QmWqmComlanib3pYax0Pa63jYa112B98kco3VUwqU8WkMlV8QmWq+E0qf1PFpPKJim9SeaPiEw9rreNhrXU8rLUO+4MPqEwVk8pUMal8U8WNyk3Fjco3VUwqU8Wk8kbFN6n8kyomlaniEw9rreNhrXU8rLUO+4MvUpkq/iaVqWJSmSpuVN6ouFGZKm5UbipuVG4qJpWbihuVqWJSmSr+TR7WWsfDWut4WGsdP3xIZaqYVKaKG5WbipuKm4pJZaq4qXhDZar4RMWk8kbFGxU3KjcqNypTxY3KTcUnHtZax8Na63hYax32B/9hKlPFjcpU8YbKVDGpTBWTyhsVk8pNxSdUPlHxhspUMalMFZPKVPGJh7XW8bDWOh7WWscPH1L5myqmikllqrhReaPipmJSmSpuVCaVqeINlaliUpkqJpVPqEwVNypTxd/0sNY6HtZax8Na6/jhyyq+SeUTKjcVk8qNyj9JZap4Q+WNihuVm4o3Kt6o+KaHtdbxsNY6HtZaxw+/TOWNijdUbiomlUnljYo3VCaVm4o3VKaKm4pJ5ZtUfpPKTcUnHtZax8Na63hYax0//MdVTCqfqLhRuam4qZhUPlExqbxRMalMFW9U3KjcqLxR8U0Pa63jYa11PKy1jh/+41Q+UTGpTBVTxY3KJ1SmihuVT6hMFf8mFZPKpDJVfOJhrXU8rLWOh7XW8cMvq/hNFZPKTcUbKlPFpDJVTCqTylQxqdyofEJlqphUpopJ5ZsqJpU3Kr7pYa11PKy1joe11vHDl6n8TSpTxaTyRsUbFTcVk8onKm5UpooblW9SmSqmiknlRuVGZar4xMNa63hYax0Pa63D/mCt9f8e1lrHw1rreFhrHQ9rreNhrXU8rLWOh7XW8bDWOh7WWsfDWut4WGsdD2ut42GtdTystY6Htdbxf+PC07HJtP7rAAAAAElFTkSuQmCC";
+
+        // Test direct QR rendering
+        const qrContainer = document.getElementById('qr-container');
+        const debugInfo = document.getElementById('debug-info');
+
+        // Set auth token for testing
+        localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODljYmFlODM2ZjU5YzA2ZTJmM2I5YTIiLCJpYXQiOjE3NTUxMDE5OTgsImV4cCI6MTc1NTEwMjg5OH0.4vgfQdTUbek1WlDrJveka0ivchnhNDsN8P5gxWYpW54');
+
+        try {
+            // Test if QRCode component works
+            debugInfo.innerHTML = `
+                <h3>Debug Information:</h3>
+                <p>QR data length: ${testQRData.length}</p>
+                <p>QR data preview: ${testQRData.substring(0, 100)}...</p>
+                <p>Token set: ${!!localStorage.getItem('token')}</p>
+            `;
+
+            // Test direct API call
+            fetch('/api/mfa/setup-totp', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('API Response:', data);
+                debugInfo.innerHTML += `
+                    <h3>API Test:</h3>
+                    <p>API call successful: ${!!data.secret}</p>
+                    <p>Secret: ${data.secret}</p>
+                    <p>QR Code length: ${data.qrCode ? data.qrCode.length : 'No QR code'}</p>
+                `;
+
+                // Try to render the QR code from API
+                if (data.qrCode) {
+                    qrContainer.innerHTML = `<img src="${data.qrCode}" alt="QR Code" style="max-width: 200px;">`;
+                }
+            })
+            .catch(error => {
+                console.error('API Error:', error);
+                debugInfo.innerHTML += `<p style="color: red;">API Error: ${error.message}</p>`;
+            });
+
+        } catch (error) {
+            console.error('QR Code rendering error:', error);
+            qrContainer.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+        }
+    </script>
+</body>
+</html>
