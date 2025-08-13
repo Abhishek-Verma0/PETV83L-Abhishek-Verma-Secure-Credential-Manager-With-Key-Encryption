@@ -40,7 +40,8 @@ router.post('/setup-totp', requirePreAuth, async (req, res) => {
 
     res.json({
       secret: secret.base32,
-      qrCode: qrCodeUrl,
+      qrCode: qrCodeUrl, // Data URL for display
+      otpauthUrl: secret.otpauth_url, // Raw URL for debugging/alternative
       tempToken
     });
     console.log('TOTP setup response sent successfully');

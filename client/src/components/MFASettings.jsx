@@ -53,11 +53,16 @@ const MFASettings = () => {
       const response = await mfaService.setupTOTP();
       console.log('✅ TOTP setup response:', response.data);
       
-      const { secret, qrCode, tempToken } = response.data;
+      const { secret, qrCode, tempToken, otpauthUrl } = response.data;
       
       if (!secret || !qrCode) {
         throw new Error('Invalid response: missing secret or QR code');
       }
+      
+      console.log('🔍 QR Code type:', typeof qrCode);
+      console.log('🔍 QR Code starts with data:image?', qrCode.startsWith('data:image'));
+      console.log('🔍 Secret:', secret);
+      console.log('🔍 OtpAuth URL:', otpauthUrl);
       
       setTotpSecret(secret);
       setQrCode(qrCode);
@@ -355,7 +360,19 @@ const MFASettings = () => {
                 <p>Scan this QR code with your authenticator app (Google Authenticator, Authy, etc.):</p>
                 <div className="qr-code-container">
                   {qrCode ? (
-                    <QRCode value={qrCode} size={200} />
+                    <div>
+                      {/* Always display as image since backend returns data URL */}
+                      <img 
+                        src={qrCode} 
+                        alt="QR Code for TOTP Setup" 
+                        style={{ 
+                          width: '200px', 
+                          height: '200px',
+                          border: '1px solid #ddd',
+                          borderRadius: '8px'
+                        }} 
+                      />
+                    </div>
                   ) : (
                     <div className="qr-code-loading">
                       Loading QR Code...
