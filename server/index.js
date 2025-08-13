@@ -22,11 +22,15 @@ mongoose
 
 const authRoutes = require("./routes/auth");
 const credentialRoutes = require("./routes/credentials");
+const mfaRoutes = require("./routes/mfa");
+const passwordResetRoutes = require("./routes/passwordReset");
 
 //  use routes
 
 app.use("/api/auth", authRoutes);
 app.use("/api/credentials", credentialRoutes);
+app.use("/api/mfa", mfaRoutes);
+app.use("/api/auth", passwordResetRoutes);
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
@@ -48,7 +52,16 @@ app.get("/api/health", (req, res) => {
 //       res.sendFile(path.join(clientPath, "index.html"));
 //   });
 // }
-const PORT = process.env.PORT;
-app.listen(PORT, "0.0.0.0", () => {
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, '0.0.0.0', (err) => {
+  if (err) {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  }
   console.log(`Server running on port ${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
+  console.log(`Server accessible at: http://0.0.0.0:${PORT}`);
+  console.log(`Network access: http://10.0.2.23:${PORT}`);
+  console.log(`MFA API: http://10.0.2.23:${PORT}/api/mfa/status`);
 });

@@ -1,0 +1,17 @@
+/* MFA Page Layout */
+.mfa-page {
+  min-height: calc(100vh - 70px); /* Adjust based on navbar height */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 20px;
+}
+
+.mfa-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .mfa-page {
+    padding: 20px 10px;
+  }
+}

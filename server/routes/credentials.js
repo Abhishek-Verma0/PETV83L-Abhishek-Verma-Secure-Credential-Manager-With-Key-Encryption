@@ -50,7 +50,7 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-// get all credentials (without sensitive data)
+// get list of credentials
 router.get("/", auth, async (req, res) => {
   try {
     const credentials = await Credential.find({ user: req.user.userId }).select(

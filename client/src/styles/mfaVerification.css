@@ -1,0 +1,100 @@
+/* MFA Verification Styles */
+.mfa-verification-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.mfa-verification-box {
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.mfa-header h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.mfa-method {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.mfa-instructions {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.mfa-instructions p {
+  margin: 0;
+  color: #1565c0;
+  font-size: 14px;
+}
+
+.mfa-actions {
+  margin: 20px 0;
+}
+
+.mfa-options {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.link-button:hover {
+  color: #0056b3;
+}
+
+.link-button:disabled {
+  color: #6c757d;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.cancel-button {
+  color: #dc3545 !important;
+}
+
+.cancel-button:hover {
+  color: #c82333 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mfa-verification-box {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+  
+  .mfa-header h2 {
+    font-size: 20px;
+  }
+}
