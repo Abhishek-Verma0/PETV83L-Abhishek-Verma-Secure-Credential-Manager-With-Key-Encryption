@@ -15,7 +15,6 @@ const Login = () => {
     });
     const [error, setError] = useState("");
     const { login: authLogin } = useAuth();
-    const [agreeTerms, setAgreeTerms]=useState(false);
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({
@@ -27,10 +26,6 @@ const Login = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       setError("");
-      if (!agreeTerms) {
-        setError("Please agree to the Terms of Use & Privacy Policy");
-        return;
-      }
       try {
         const { token, userId } = await login(
           formData.username,
@@ -72,14 +67,6 @@ const Login = () => {
         <p className="auth-link">
           Don't have an account? <Link to="/register">Register</Link>
         </p>
-        <div class="termsandconditions">
-           <input type="checkbox" id="terms" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)}/>
-           <label for="terms">
-              By continuing, I agree to the
-              <span class="link">Terms of Use </span> &
-              <span class="link"> Privacy Policy</span>
-            </label> 
-          </div>
       </div>
     </div>
   );
