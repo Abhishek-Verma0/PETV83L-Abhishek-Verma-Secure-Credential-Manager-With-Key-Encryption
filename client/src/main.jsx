@@ -9,3 +9,18 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>
 );
+
+<button 
+    onClick={toggleTheme} 
+    style={{ 
+        padding: "8px 12px", 
+        cursor: "pointer", 
+        backgroundColor: theme === "light" ? "#3498db" : "#2c3e50", 
+        color: "#fff", 
+        border: "none", 
+        borderRadius: "4px", 
+        transition: "background-color 0.3s ease" 
+    }}
+>
+    {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
+</button>

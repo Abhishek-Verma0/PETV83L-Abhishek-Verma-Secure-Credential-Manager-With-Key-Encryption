@@ -3,8 +3,8 @@
     --primary-hover: #2980b9;
     --secondary-color: #2c3e50;
     --secondary-hover: #34495e;
-    --background-color: #f5f7fa;
-    --text-color: #2c3e50;
+    --background-color: #f5f7fa; /* Light background */
+    --text-color: #2c3e50; /* Light text color */
     --border-radius: 8px;
     --transition: all 0.3s ease;
     --section-padding: 4rem 2rem;
@@ -14,24 +14,13 @@
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+[data-theme="dark"] {
+    --background-color: #121212; /* Dark background */
+    --text-color: #ffffff; /* Dark text color */
 }
 
-
-body{
-    background: var(--background-color);
-    font-family: -apple-system,
-        BlinkMacSystemFont,
-        'Segoe UI',
-        Roboto,
-        'Helvetica Neue',
-        Arial,
-        sans-serif;
+/* Apply the background and text color */
+body {
+    background-color: var(--background-color);
     color: var(--text-color);
-
 }
-
