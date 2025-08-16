@@ -1,5 +1,5 @@
 import React from 'react';
-import QRCode from 'react-qr-code';
+// import QRCode from 'react-qr-code';
 
 function SimpleQRTest() {
   const sampleData = 'otpauth://totp/TestApp:testuser@example.com?secret=JBSWY3DPEHPK3PXP&issuer=TestApp';

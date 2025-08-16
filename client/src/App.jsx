@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Navigate,
   Route,
@@ -23,6 +23,15 @@ import QuickLogin from "./components/QuickLogin";
 import './styles/responsive.css'
 
 const App = () => {
+  // Initialize theme on app load
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    
+    document.documentElement.setAttribute('data-theme', theme);
+  }, []);
+
   return (
     <Router>
       <AuthProvider>
@@ -101,7 +110,7 @@ const App = () => {
               path="/quick-login"
               element={<QuickLogin />}
             />
-            {/* redirecting all unknown route to dashboard if logged in  if not logged in redirect to landing  */}
+            {/* redirecting all unknown route to dashboard if logged in  if not logged in redirect to landing */}
             <Route
               path="*"
               element={

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import QRCode from 'react-qr-code';
+// import QRCode from 'react-qr-code';
 
 const QRCodeTest = () => {
   const [testData, setTestData] = useState('');

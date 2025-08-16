@@ -3,12 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import { useAuth } from "../auth/AuthContext";
 import Button from "./Button";
+import ThemeToggle from "./ThemeToggle";
+
 const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
+  
   const handleLogout = () => {
     logout();
   };
+  
   const navigate = useNavigate();
+
   return (
     <>
       <nav className="navbar">
@@ -19,6 +24,7 @@ const Navbar = () => {
         <div className="nav-menu">
           {isAuthenticated ? (
             <div className="nav-authenticated">
+              <ThemeToggle />
               <Link to="/mfa" className="nav-link">
                 🔐 MFA Settings
               </Link>
@@ -28,12 +34,14 @@ const Navbar = () => {
             </div>
           ) : (
             <>
+              <ThemeToggle />
               <Link to="/login" className="btn btn-primary">
                 Login
               </Link>
               <Link to="/register" className="btn btn-secondary">
                 Register
               </Link>
+              
             </>
           )}
         </div>

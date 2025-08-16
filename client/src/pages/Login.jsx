@@ -101,7 +101,7 @@ const Login = () => {
             onChange={handleChange}
             required
           />
-          <Button type="submit" fullWidth>
+          <Button type="submit" className="btn-full" fullWidth>
             Login
           </Button>
         </form>
