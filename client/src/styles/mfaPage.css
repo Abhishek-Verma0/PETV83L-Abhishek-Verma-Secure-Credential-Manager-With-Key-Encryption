@@ -1,8 +1,9 @@
 /* MFA Page Layout */
 .mfa-page {
-  min-height: calc(100vh - 70px); /* Adjust based on navbar height */
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: calc(100vh - 70px);
+  background: var(--hero-gradient);
   padding: 40px 20px;
+  transition: var(--transition);
 }
 
 .mfa-page-container {

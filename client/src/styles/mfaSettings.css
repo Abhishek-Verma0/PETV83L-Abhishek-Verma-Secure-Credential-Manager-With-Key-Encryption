@@ -3,43 +3,59 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: var(--transition);
 }
 
 .mfa-settings h2 {
-  color: #333;
+  color: var(--text-color);
   margin-bottom: 10px;
+  transition: var(--transition);
+}
+
+.mfa-description {
+  color: var(--muted-text);
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
 .loading {
-    text-align: center;
-    padding: 40px;
-    color: #666;
-    font-size: 16px;
+  text-align: center;
+  padding: 40px;
+  color: var(--muted-text);
+  font-size: 16px;
 }
 
 .error-message {
-    text-align: center;
-    padding: 40px;
-    color: #e74c3c;
+  text-align: center;
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .error-message h3 {
-    color: #e74c3c;
-    margin-bottom: 15px;
+  color: var(--error-color);
+  margin-bottom: 15px;
 }
 
 .error-message p {
-    color: #666;
-    margin-bottom: 20px;
-    line-height: 1.5;
+  color: var(--muted-text);
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .mfa-status {
-  background: white;
+  background: var(--card-bg);
   border-radius: 10px;
   padding: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   margin-bottom: 30px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .mfa-status-header {
@@ -51,7 +67,7 @@
 
 .mfa-status-header h3 {
   margin: 0;
-  color: #333;
+  color: var(--text-color);
 }
 
 .status-badge {
@@ -63,18 +79,18 @@
 }
 
 .status-badge.enabled {
-  background: #d4edda;
-  color: #155724;
+  background: var(--success-bg);
+  color: var(--success-color);
 }
 
 .status-badge.disabled {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--error-bg);
+  color: var(--error-color);
 }
 
 .mfa-enabled p {
   margin-bottom: 15px;
-  color: #555;
+  color: var(--card-text);
 }
 
 .mfa-actions {
@@ -87,35 +103,43 @@
 .disable-form,
 .backup-codes-form {
   padding: 20px;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  background: #f8f9fa;
+  background: var(--section-bg-alt);
+  transition: var(--transition);
+}
+
+.mfa-setup-options h4 {
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
 }
 
 .setup-option {
-  background: white;
-  border: 1px solid #dee2e6;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, background-color 0.3s;
 }
 
 .setup-option:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
-.setup-option h4 {
+.option-info h5 {
   margin: 0 0 10px 0;
-  color: #333;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 1.1rem;
 }
 
-.setup-option p {
+.option-info p {
   margin: 0 0 15px 0;
-  color: #666;
+  color: var(--card-text);
 }
 
 .sms-setup-form {
@@ -126,15 +150,17 @@
 
 /* TOTP Setup */
 .totp-setup {
-  background: white;
+  background: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .totp-setup h3 {
   margin-bottom: 30px;
-  color: #333;
+  color: var(--text-color);
 }
 
 .setup-steps {
@@ -145,26 +171,27 @@
 
 .step {
   padding: 20px;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  background: #f8f9fa;
+  background: var(--section-bg-alt);
+  transition: var(--transition);
 }
 
 .step h4 {
   margin: 0 0 15px 0;
-  color: #333;
+  color: var(--text-color);
 }
 
 .step p {
   margin: 0 0 15px 0;
-  color: #666;
+  color: var(--card-text);
 }
 
 .qr-code-container {
   display: flex;
   justify-content: center;
   padding: 20px;
-  background: white;
+  background: white; /* QR codes need white background */
   border-radius: 8px;
   margin: 15px 0;
 }
@@ -175,10 +202,10 @@
   align-items: center;
   width: 200px;
   height: 200px;
-  background: #f8f9fa;
-  border: 2px dashed #dee2e6;
+  background: var(--section-bg-alt);
+  border: 2px dashed var(--border-color);
   border-radius: 8px;
-  color: #666;
+  color: var(--muted-text);
   font-size: 16px;
 }
 
@@ -187,32 +214,36 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
-  background: white;
+  background: var(--section-bg-alt);
   border-radius: 6px;
   margin: 15px 0;
+  border: 1px solid var(--border-color);
 }
 
 .manual-key code {
   flex: 1;
   padding: 8px;
-  background: #f1f3f4;
+  background: var(--input-bg);
   border-radius: 4px;
   font-family: 'Courier New', monospace;
   word-break: break-all;
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
 }
 
 .copy-button {
   padding: 8px 12px;
-  background: #007bff;
+  background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 12px;
+  transition: var(--transition);
 }
 
 .copy-button:hover {
-  background: #0056b3;
+  background: var(--primary-hover);
 }
 
 .setup-actions {
@@ -223,46 +254,56 @@
 
 /* OTP Setup */
 .otp-setup {
-  background: white;
+  background: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .otp-setup h3 {
   margin-bottom: 20px;
-  color: #333;
+  color: var(--text-color);
 }
 
 .otp-setup p {
   margin-bottom: 25px;
-  color: #666;
+  color: var(--card-text);
 }
 
 /* Backup Codes */
 .backup-codes-display {
-  background: white;
+  background: var(--card-bg);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   text-align: center;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .backup-codes-display h3 {
   margin-bottom: 20px;
-  color: #333;
+  color: var(--text-color);
+}
+
+.backup-codes-display p {
+  color: var(--card-text);
+  margin-bottom: 25px;
+  line-height: 1.5;
 }
 
 .backup-codes-warning {
-  background: #fff3cd;
-  color: #856404;
+  background: var(--warning-bg);
+  color: var(--warning-color);
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 25px;
-  border: 1px solid #ffeaa7;
+  border: 1px solid var(--warning-border);
 }
 
-.backup-codes-grid {
+.backup-codes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 10px;
@@ -274,15 +315,16 @@
 
 .backup-code {
   padding: 10px;
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 6px;
   font-family: 'Courier New', monospace;
   font-weight: bold;
-  color: #333;
+  color: var(--text-color);
+  transition: var(--transition);
 }
 
-.backup-codes-actions {
+.backup-actions {
   display: flex;
   gap: 15px;
   justify-content: center;
@@ -291,21 +333,23 @@
 
 /* Alerts */
 .error-alert {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--error-bg);
+  color: var(--error-color);
   padding: 12px 16px;
   border-radius: 6px;
   margin-bottom: 20px;
-  border: 1px solid #f5c6cb;
+  border: 1px solid var(--error-border);
+  transition: var(--transition);
 }
 
 .success-alert {
-  background: #d4edda;
-  color: #155724;
+  background: var(--success-bg);
+  color: var(--success-color);
   padding: 12px 16px;
   border-radius: 6px;
   margin-bottom: 20px;
-  border: 1px solid #c3e6cb;
+  border: 1px solid var(--success-border);
+  transition: var(--transition);
 }
 
 /* Responsive */
@@ -329,11 +373,11 @@
     align-items: stretch;
   }
   
-  .backup-codes-grid {
+  .backup-codes {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .backup-codes-actions {
+  .backup-actions {
     flex-direction: column;
   }
   

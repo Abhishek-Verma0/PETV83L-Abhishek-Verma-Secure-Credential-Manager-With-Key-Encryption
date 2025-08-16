@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { mfaService } from '../service/mfa';
 import Button from './Button';
 import FormInput from './FormInput';
-
+import QRCode from 'react-qr-code';
 import '../styles/mfaSettings.css';
 
 const MFASettings = () => {
