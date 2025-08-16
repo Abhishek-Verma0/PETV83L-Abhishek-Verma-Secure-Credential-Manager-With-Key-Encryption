@@ -1,4 +1,3 @@
-
 :root {
     --primary-color: #3498db;
     --primary-hover: #2980b9;
@@ -13,8 +12,18 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --footer-bg: #2c3e50;
+    --footer-text: #ecf0f1;
+    --footer-muted: #bdc3c7;
+    --footer-border: rgba(255, 255, 255, 0.1);
 }
 
+[data-theme="dark"] {
+    --footer-bg: #111827;
+    --footer-text: #d1d5db;
+    --footer-muted: #9ca3af;
+    --footer-border: rgba(255, 255, 255, 0.1);
+}
 
 * {
     margin: 0;
@@ -22,67 +31,64 @@
     box-sizing: border-box;
 }
 
-
-
-.footer{
-    background: var(--secondary-color);
-    color: white;
+.footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
     padding: 4rem 2rem 1rem;
+    transition: var(--transition);
 }
 
-.footer-content{
+.footer-content {
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 3rem;
 }
 
-
-.footer-section h3{
+.footer-section h3 {
     margin-bottom: 1.5rem;
-    font-size: 1.2rem ;
+    font-size: 1.2rem;
+    color: var(--footer-text);
 }
 
-.footer-section p{
+.footer-section p {
     margin-bottom: 0.5rem;
-
+    color: var(--footer-text);
 }
 
 .footer-section ul {
     list-style: none;
-
 }
+
 .footer-section ul li {
     margin-bottom: 0.5rem;
 }
 
-.footer-section a{
-    color: #ecf0f1;
+.footer-section a {
+    color: var(--footer-text);
     text-decoration: none;
     transition: var(--transition);
 }
 
-.footer-section a:hover{
+.footer-section a:hover {
     color: var(--primary-color);
 }
 
-.footer-bottom{
+.footer-bottom {
     max-width: var(--max-width);
     margin: 3rem auto 0;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--footer-border);
     text-align: center;
     font-size: 0.9rem;
-    color: #bdc3c7;
+    color: var(--footer-muted);
 }
 
-
-
-@media (max-width: 768px){
-    footer-content {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            text-align: center;
-        }
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
 }

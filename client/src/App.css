@@ -12,26 +12,155 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --navbar-bg: white;
+    --navbar-hover: #f8f9fa;
+    --card-bg: white;
+    --card-text: #2c3e50;
+    --heading-color: #2c3e50;
+    --error-bg: #fee2e2;
+  --error-color: #dc2626;
+  --error-border: #fecaca;
+  --success-bg: #d1fae5;
+  --success-color: #065f46;
+  --success-border: #a7f3d0;
+  --warning-bg: #fef3c7;
+  --warning-color: #92400e;
+  --warning-border: #fde68a;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --card-bg: white;
+  --card-text: #374151;
+  --section-bg-alt: #f9fafb;
+  --border-color: #e5e7eb;
+  --muted-text: #6b7280;
+  --info-bg: #e3f2fd;
+  --info-color: #1565c0;
+  --error-hover: #c82333;
+  --hero-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
+[data-theme="dark"] {
+    --primary-color: #4dabf7;
+    --primary-hover: #339af0;
+    --secondary-color: #495057;
+    --secondary-hover: #6c757d;
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --navbar-bg: #1e1e1e;
+    --navbar-hover: #2d2d2d;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+    --card-bg: #1e1e1e;
+    --card-text: #e5e5e5;
+    --heading-color: #ffffff;
+    --error-bg: #3f1f1f;
+  --error-color: #ff6b6b;
+  --error-border: #5a1f1f;
+  --success-bg: #1f3f2f;
+  --success-color: #51cf66;
+  --success-border: #2f5233;
+  --warning-bg: #3f3f1f;
+  --warning-color: #ffd43b;
+  --warning-border: #5a5a1f;
+  --input-bg: #2d2d2d;
+  --input-border: #404040;
+  --card-bg: #1e1e1e;
+  --card-text: #e5e5e5;
+  --section-bg-alt: #2a2a2a;
+  --border-color: #404040;
+  --muted-text: #9ca3af;
+  --info-bg: #1a2332;
+  --info-color: #64b5f6;
+  --error-hover: #ff5252;
+  --hero-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-body{
+body {
     background: var(--background-color);
-    font-family: -apple-system,
-        BlinkMacSystemFont,
-        'Segoe UI',
-        Roboto,
-        'Helvetica Neue',
-        Arial,
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     color: var(--text-color);
-
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body, 
+.dashboard-container, 
+.main-content,
+.app {
+    padding-top: 40px; /* Adjust this value based on your navbar height */
+    box-sizing: border-box;
+}
+
+/* ONLY target navbar elements specifically - don't use !important */
+[data-theme="dark"] .nav-logo a {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .nav-menu .btn-secondary {
+    color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .theme-toggle {
+    color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+/* Landing page content styling */
+.landing-container {
+    background: var(--background-color);
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+/* Feature cards */
+.feature-card, 
+.features-grid > div,
+.feature-item {
+    background: var(--card-bg);
+    color: var(--card-text);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .features-grid > div,
+[data-theme="dark"] .feature-item {
+    border-color: #404040;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    transition: var(--transition);
+}
+
+/* Ensure content sections have proper background */
+.content-section,
+.main-content,
+.landing-content {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Security section styling */
+.security-section {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.security-feature {
+    background: var(--card-bg);
+    color: var(--card-text);
+    transition: var(--transition);
+}

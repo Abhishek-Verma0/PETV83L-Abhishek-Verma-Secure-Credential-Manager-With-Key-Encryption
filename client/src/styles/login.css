@@ -12,15 +12,32 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
- }
+    --auth-box-bg: white;
+    --success-alert-bg: #d4edda;
+    --success-alert-color: #155724;
+    --success-alert-border: #c3e6cb;
+    --error-alert-bg: #fde8e8;
+    --error-alert-color: #e74c3c;
+    --muted-text: #666;
+    --separator-color: #ccc;
+}
+
+[data-theme="dark"] {
+    --auth-box-bg: #1e1e1e;
+    --success-alert-bg: #1f3f2f;
+    --success-alert-color: #51cf66;
+    --success-alert-border: #2f5233;
+    --error-alert-bg: #3f1f1f;
+    --error-alert-color: #ff6b6b;
+    --muted-text: #b3b3b3;
+    --separator-color: #555;
+}
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;     
+    box-sizing: border-box;
 }
-
-
 
 .auth-container {
     min-height: 100vh;
@@ -30,21 +47,23 @@
     padding: 20px;
 }
 
-.auth-box{
-    background: white;
+.auth-box {
+    background: var(--auth-box-bg);
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
     width: 100%;
     max-width: 400px;
-}
-.auth-box h2{
-    margin-bottom: 20px;
-    text-align: center;
-    color: #2c3e50;
+    transition: var(--transition);
 }
 
-.auth-link{
+.auth-box h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.auth-link {
     margin-top: 20px;
     text-align: center;
 }
@@ -59,41 +78,43 @@
 }
 
 .auth-separator {
-    color: #ccc;
+    color: var(--separator-color);
 }
 
 .auth-description {
     text-align: center;
     margin-bottom: 20px;
-    color: #666;
+    color: var(--muted-text);
     font-size: 14px;
     line-height: 1.4;
 }
 
-.auth-link a{
-    color:#3498db;
+.auth-link a {
+    color: var(--primary-color);
     text-decoration: none;
 }
 
-.auth-link a:hover{
+.auth-link a:hover {
     text-decoration: underline;
 }
 
 .success-alert {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: var(--success-alert-bg);
+    color: var(--success-alert-color);
     padding: 12px;
     border-radius: 4px;
     margin-bottom: 20px;
     text-align: center;
-    border: 1px solid #c3e6cb;
+    border: 1px solid var(--success-alert-border);
+    transition: var(--transition);
 }
 
 .error-alert {
-    background-color: #fde8e8;
-    color: #e74c3c;
+    background-color: var(--error-alert-bg);
+    color: var(--error-alert-color);
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 20px;
     text-align: center;
+    transition: var(--transition);
 }

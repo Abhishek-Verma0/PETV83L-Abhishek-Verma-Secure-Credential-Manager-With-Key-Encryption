@@ -232,3 +232,339 @@
     flex-direction: row;
   }
 } 
+
+
+/* Dark mode adjustments for responsive design */
+[data-theme="dark"] .dashboard-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid #404040;
+}
+
+[data-theme="dark"] .credential-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .add-credential-form {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .password-prompt,
+[data-theme="dark"] .credential-details {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Tablet Styles (768px to 1024px) */
+@media screen and (max-width: 1024px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .dashboard-header {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header {
+    flex-direction: row;
+    padding: 0.5rem 0;
+  }
+
+  .credentials-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .add-credential-form {
+    padding: 1.5rem;
+  }
+
+  .credential-card {
+    padding: 1rem;
+  }
+
+  .password-prompt {
+    width: 90%;
+    max-width: 500px;
+    padding: 1.5rem;
+  }
+
+  .credential-details {
+    width: 90%;
+    max-width: 500px;
+    padding: 1.5rem;
+  }
+
+  .button-group {
+    gap: 0.75rem;
+  }
+
+  /* Theme toggle responsive for tablet */
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+}
+
+/* Mobile Styles (up to 767px) */
+@media screen and (max-width: 767px) {
+  :root {
+    --section-padding: 2rem 1rem;
+  }
+
+  .dashboard-container {
+    padding: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem 0.5rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .section-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .credentials-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .add-credential-form {
+    padding: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .credential-card {
+    padding: 0.75rem;
+  }
+
+  .credential-card h3 {
+    font-size: 1rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+
+  .password-prompt {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .password-prompt h3 {
+    font-size: 1.1rem;
+  }
+
+  .credential-details {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .credential-details h3 {
+    font-size: 1.1rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Navbar adjustments */
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-logo a {
+    font-size: 1.2rem;
+  }
+
+  .nav-menu {
+    gap: 0.5rem;
+  }
+
+  .nav-menu .btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Theme toggle for mobile */
+  .nav-authenticated {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .theme-toggle {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    margin-left: 0.5rem;
+  }
+
+  /* Error and success alerts */
+  .error-alert,
+  .success-alert {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+
+  /* Empty state */
+  .empty-state {
+    padding: 1rem;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile Styles (up to 375px) */
+@media screen and (max-width: 375px) {
+  .dashboard-container {
+    padding: 0.25rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .credential-card {
+    padding: 0.5rem;
+  }
+
+  .form-input {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  /* Very small theme toggle */
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  /* Stack nav items vertically on very small screens */
+  .nav-menu {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .nav-authenticated {
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+  }
+}
+
+/* Handle notch devices */
+@supports (padding: max(0px)) {
+  .dashboard-container,
+  .navbar {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Handle landscape mode */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .dashboard-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .password-prompt,
+  .credential-details {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .button-group {
+    flex-direction: row;
+  }
+
+  /* Keep theme toggle accessible in landscape */
+  .nav-authenticated {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  [data-theme="dark"] .theme-toggle {
+    border-color: #ffffff;
+  }
+  
+  .theme-toggle {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .btn,
+  .nav-link,
+  .credential-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
