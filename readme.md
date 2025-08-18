@@ -91,6 +91,7 @@ A **Secure Credential Manager** built using the **MERN stack (MongoDB, Express, 
 - ⚠️ **Mitigates session hijacking** via enforced re-verification using password
 - 📱 **Responsive Design** - Works on desktop and mobile devices
 - 🎨 **Modern UI/UX** with intuitive navigation
+- Dark Mode available 
 
 
 ---
