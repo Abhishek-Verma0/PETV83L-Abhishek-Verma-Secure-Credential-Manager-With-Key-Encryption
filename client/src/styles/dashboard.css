@@ -54,6 +54,22 @@
     border-bottom: 1px solid var(--border-color);
 }
 
+.dashboard-header .header-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-header h1 {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.dashboard-header .header-sub {
+    font-size: 0.95rem;
+    color: var(--muted-text);
+}
+
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -61,11 +77,25 @@
     margin-bottom: 2rem;
 }
 
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
 .credentials-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 4px;
+}
+
+.credentials-list.is-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52vh; /* center within most viewports */
 }
 
 .credential-card {
@@ -77,8 +107,34 @@
     border: 1px solid var(--border-color);
 }
 
+.credential-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.credential-card .cred-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cred-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    font-weight: 700;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
 .credential-card h3 {
-    margin-bottom: 0 0 2rem 0;
+    margin: 0;
+    font-size: 1.05rem;
     color: var(--text-color);
 }
 
@@ -95,9 +151,9 @@
 
 .add-form {
     background: var(--card-bg);
-    padding: 20px;
+    padding: 16px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
     transition: var(--transition);
@@ -105,10 +161,10 @@
 
 .credential-details {
     background: var(--details-bg);
-    padding: 1rem;
-    border-radius: 4px;
+    padding: 0.85rem;
+    border-radius: 6px;
     box-shadow: var(--shadow-sm);
-    margin: 1rem 0;
+    margin: 0.9rem 0;
     border-left: 4px solid var(--primary-color);
     transition: var(--transition);
 }
@@ -136,12 +192,12 @@
 /* Credential Form Styles */
 .add-credential-form {
     background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
     box-shadow: var(--shadow-sm);
     width: 100%;
-    max-width: none;
+    max-width: 100%;
     border: 1px solid var(--border-color);
     transition: var(--transition);
 }
@@ -149,6 +205,36 @@
 .add-credential-form .form-group {
     margin-bottom: 1.5rem;
     width: 100%;
+}
+
+.add-credential-form .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 18px;
+        align-items: start;
+}
+
+.add-credential-form .form-grid .form-group {
+        margin-bottom: 0.75rem;
+}
+
+.form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+}
+
+@media screen and (max-width: 767px) {
+    .add-credential-form .form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 
 .add-credential-form .form-input {
@@ -160,6 +246,20 @@
     background-color: var(--card-bg);
     color: var(--text-color);
     transition: var(--transition);
+}
+
+.add-credential-form h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.add-credential-form .form-group {
+    margin-bottom: 0.9rem;
+}
+
+.add-credential-form .button-group {
+    justify-content: flex-start;
+    gap: 0.75rem;
 }
 
 .add-credential-form .button-group {
@@ -196,8 +296,12 @@
 }
 
 .empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
     text-align: center;
-    padding: 2rem;
+    padding: 1.6rem;
     background: var(--empty-state-bg);
     border-radius: 8px;
     margin: 1rem 0;
@@ -212,4 +316,43 @@
 
 .btn1 {
     margin: 0.75rem;
+}
+
+.card-actions {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-actions-inline button {
+    min-width: 110px;
+}
+
+[data-theme="dark"] .cred-avatar {
+    background: linear-gradient(135deg, #2b9bd3, #1f78b4);
+}
+
+/* Keep the dashboard right column (hero/right box) in light style even in dark mode */
+[data-theme="dark"] .dashboard-container .right-pane,
+[data-theme="dark"] .dashboard-container .right-pane .credentials-list,
+[data-theme="dark"] .dashboard-container .right-pane .credential-card,
+[data-theme="dark"] .dashboard-container .right-pane .add-credential-form,
+[data-theme="dark"] .dashboard-container .right-pane .empty-state,
+[data-theme="dark"] .dashboard-container .right-pane .credential-details {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #e6e6e6 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="dark"] .dashboard-container .right-pane .credential-card h3,
+[data-theme="dark"] .dashboard-container .right-pane .credential-card p,
+[data-theme="dark"] .dashboard-container .right-pane .credential-details p {
+    color: #111111 !important;
+}
+
+[data-theme="dark"] .dashboard-container .right-pane .btn1,
+[data-theme="dark"] .dashboard-container .right-pane .button-group button {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #e6e6e6 !important;
 }

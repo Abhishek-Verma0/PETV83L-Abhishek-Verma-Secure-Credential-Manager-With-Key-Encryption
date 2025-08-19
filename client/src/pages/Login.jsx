@@ -82,7 +82,14 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h2>Login</h2>
+        <div className="auth-header">
+          <img src="/lock-icon.svg" alt="SecureCred" className="site-logo" />
+          <div className="site-titles">
+            <h1 className="site-title">SecureCred</h1>
+            <p className="site-subtitle">Credential manager with key encryption</p>
+          </div>
+        </div>
+        <h2>Sign in to your account</h2>
         {error && <div className="error-alert">{error}</div>}
 
         <form onSubmit={handleSubmit}>
