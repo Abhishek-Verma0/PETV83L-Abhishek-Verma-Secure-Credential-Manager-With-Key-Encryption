@@ -30,7 +30,7 @@ const passwordResetRoutes = require("./routes/passwordReset");
 app.use("/api/auth", authRoutes);
 app.use("/api/credentials", credentialRoutes);
 app.use("/api/mfa", mfaRoutes);
-app.use("/api/auth", passwordResetRoutes);
+app.use("/api/password-reset", passwordResetRoutes);
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
