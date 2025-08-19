@@ -27,10 +27,19 @@ const passwordResetRoutes = require("./routes/passwordReset");
 
 //  use routes
 
-app.use("/api/auth", authRoutes);
-app.use("/api/credentials", credentialRoutes);
-app.use("/api/mfa", mfaRoutes);
-app.use("/api/password-reset", passwordResetRoutes);
+try {
+  app.use("/api/auth", require("./routes/auth"));
+  console.log("auth routes loaded");
+  app.use("/api/credentials", require("./routes/credentials"));
+  console.log("credentials routes loaded");
+  app.use("/api/mfa", require("./routes/mfa"));
+  console.log("mfa routes loaded");
+  app.use("/api/password-reset", require("./routes/passwordReset"));
+  console.log("passwordReset routes loaded");
+} catch (err) {
+  console.error("Error loading routes:", err);
+}
+
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
