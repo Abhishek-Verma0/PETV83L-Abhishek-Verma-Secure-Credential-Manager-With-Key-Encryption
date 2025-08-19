@@ -31,6 +31,13 @@ const ForgotPassword = () => {
   return (
     <div className="auth-container">
       <div className="auth-box">
+        <div className="auth-header">
+          <img src="/lock-icon.svg" alt="logo" className="site-logo" />
+          <div className="site-titles">
+            <p className="site-title">Secure Credential Manager</p>
+            <p className="site-subtitle">Manage secrets safely</p>
+          </div>
+        </div>
         <h2>Forgot Password</h2>
         <p className="auth-description">
           Enter your email address and we'll send you a link to reset your password.
@@ -49,17 +56,17 @@ const ForgotPassword = () => {
             placeholder="Enter your email"
           />
           
-          <Button type="submit" fullWidth disabled={loading}>
-            {loading ? 'Sending...' : 'Send Reset Link'}
-          </Button>
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: 8}}>
+            <Button type="submit" className="btn-full" disabled={loading}>
+              {loading ? 'Sending...' : 'Send Reset Link'}
+            </Button>
+          </div>
         </form>
-
-        <div className="auth-links">
-          <Link to="/login" className="auth-link">
+        <div className="auth-links lr-links">
+          <Link to="/login" className="auth-link left-link">
             ← Back to Login
           </Link>
-          <span className="auth-separator">•</span>
-          <Link to="/register" className="auth-link">
+          <Link to="/register" className="auth-link right-link">
             Create Account
           </Link>
         </div>

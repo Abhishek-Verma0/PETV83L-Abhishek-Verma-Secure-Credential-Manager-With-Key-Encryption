@@ -30,7 +30,7 @@ const Dashboard = () => {
     website: "",
   });
 
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -97,10 +97,7 @@ const Dashboard = () => {
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  
 
   const handleSave = () => {
     if (!newCredential.title.trim()) {
@@ -139,7 +136,11 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <ScreenshotPrevention />
       <header className="dashboard-header">
-        <h1>Your Secure Credentials</h1>
+        <div className="header-left">
+          <h1>Your Secure Credentials</h1>
+          <p className="header-sub">Securely store and manage passwords, usernames and websites.</p>
+        </div>
+        
       </header>
 
       {/* Only show non-credential related errors in dashboard */}
@@ -151,125 +152,137 @@ const Dashboard = () => {
       <div className="credentials-section">
         <div className="section-header">
           <h2>{showAddForm ? "Add New Credential" : "Stored Credentials"}</h2>
-          <Button onClick={() => setShowAddForm(!showAddForm)}>
-            {showAddForm ? "Cancel" : "Add New"}
-          </Button>
+          <div className="header-actions-inline">
+            <Button onClick={() => setShowAddForm(!showAddForm)}>
+              {showAddForm ? "Close" : "Add New"}
+            </Button>
+          </div>
         </div>
 
-        {showAddForm && (
-          <div className="add-credential-form">
-            <h3>Add New Credential</h3>
-            <FormInput
-              label="Title"
-              name="title"
-              value={newCredential.title}
-              onChange={handleChange}
-              required
-              placeholder="e.g., Gmail Account"
-            />
-            <FormInput
-              label="Username/Email"
-              name="username"
-              value={newCredential.username}
-              onChange={handleChange}
-              placeholder="e.g., your.email@gmail.com"
-            />
-            <FormInput
-              label="Password"
-              type="password"
-              name="password"
-              value={newCredential.password}
-              onChange={handleChange}
-              placeholder="Enter password"
-            />
-            <FormInput
-              label="Website"
-              name="website"
-              value={newCredential.website}
-              onChange={handleChange}
-              placeholder="e.g., https://gmail.com"
-            />
+        <div className="dashboard-grid">
+          <main className="right-pane">
+            {showAddForm && (
+              <div className="add-credential-form">
+                <h3>Add New Credential</h3>
+                <div className="form-grid">
+                  <FormInput
+                    label="Title"
+                    name="title"
+                    value={newCredential.title}
+                    onChange={handleChange}
+                    required
+                    placeholder="e.g., Gmail Account"
+                  />
+                  <FormInput
+                    label="Username/Email"
+                    name="username"
+                    value={newCredential.username}
+                    onChange={handleChange}
+                    placeholder="e.g., your.email@gmail.com"
+                  />
+                  <FormInput
+                    label="Password"
+                    type="password"
+                    name="password"
+                    value={newCredential.password}
+                    onChange={handleChange}
+                    placeholder="Enter password"
+                  />
+                  <FormInput
+                    label="Website"
+                    name="website"
+                    value={newCredential.website}
+                    onChange={handleChange}
+                    placeholder="e.g., https://gmail.com"
+                  />
+                </div>
 
-            <div className="button-group">
-              <Button onClick={handleSave} variant="primary">
-                Save
-              </Button>
-              <Button
-                onClick={() => {
-                  setShowAddForm(false);
-                  setNewCredential({
-                    title: "",
-                    username: "",
-                    password: "",
-                    website: "",
-                  });
-                }}
-                variant="secondary"
-              >
-                Cancel
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {showPasswordPrompt && (
-          <PasswordPrompt
-            onSubmit={
-              deleteMode
-                ? handleDelete
-                : selectedCredential
-                ? handleView
-                : handleSubmit
-            }
-            onCancel={() => {
-              setShowPasswordPrompt(false);
-              setSelectedCredential(null);
-              setDeleteMode(false);
-            }}
-            action={
-              deleteMode ? "delete" : selectedCredential ? "view" : "save"
-            }
-          />
-        )}
-
-        <div className="credentials-list">
-          {credentials.length === 0 ? (
-            <div className="empty-state">
-              <p>No credentials stored yet. Click "Add New" to get started!</p>
-            </div>
-          ) : (
-            credentials.map((cred) => (
-              <div key={cred._id} className="credential-card">
-                <h3>{cred.title}</h3>
-                {viewedCredential && viewedCredential._id === cred._id ? (
-                  <div className="credential-details">
-                    <p>
-                      <strong>Username:</strong>{" "}
-                      {viewedCredential.fields.username}
-                    </p>
-                    <p>
-                      <strong>Password:</strong>{" "}
-                      {viewedCredential.fields.password}
-                    </p>
-                    {viewedCredential.fields.website && (
-                      <p>
-                        <strong>Website:</strong>{" "}
-                        {viewedCredential.fields.website}
-                      </p>
-                    )}
-                  </div>
-                ) : null}
-                <div className="button-group">
-                  <Button className="btn1" variant="primary" onClick={() => initiateView(cred)}>
-                    View
+                <div className="button-group form-actions">
+                  <Button onClick={handleSave} variant="primary">
+                    Save
                   </Button>
-                  <Button className="btn1" variant="danger" onClick={() => initiateDelete(cred)}>
-                    Delete
+                  <Button
+                    onClick={() => {
+                      setShowAddForm(false);
+                      setNewCredential({
+                        title: "",
+                        username: "",
+                        password: "",
+                        website: "",
+                      });
+                    }}
+                    variant="secondary"
+                  >
+                    Cancel
                   </Button>
                 </div>
               </div>
-            ))
-          )}
+            )}
+            {showPasswordPrompt && (
+              <PasswordPrompt
+                onSubmit={
+                  deleteMode
+                    ? handleDelete
+                    : selectedCredential
+                    ? handleView
+                    : handleSubmit
+                }
+                onCancel={() => {
+                  setShowPasswordPrompt(false);
+                  setSelectedCredential(null);
+                  setDeleteMode(false);
+                }}
+                action={
+                  deleteMode ? "delete" : selectedCredential ? "view" : "save"
+                }
+              />
+            )}
+
+            <div className={`credentials-list ${credentials.length === 0 && !showAddForm ? 'is-empty' : ''}`}>
+              {credentials.length === 0 && !showAddForm ? (
+                <div className="empty-state">
+                  <p>No credentials stored yet. Click "Add New" to get started!</p>
+                </div>
+              ) : (
+                credentials.map((cred) => (
+                  <div key={cred._id} className="credential-card">
+                    <div className="cred-top">
+                      <div className="cred-avatar">{cred.title ? cred.title.charAt(0).toUpperCase() : "#"}</div>
+                      <h3>{cred.title}</h3>
+                    </div>
+
+                    {viewedCredential && viewedCredential._id === cred._id ? (
+                      <div className="credential-details">
+                        <p>
+                          <strong>Username:</strong>{" "}
+                          {viewedCredential.fields.username}
+                        </p>
+                        <p>
+                          <strong>Password:</strong>{" "}
+                          {viewedCredential.fields.password}
+                        </p>
+                        {viewedCredential.fields.website && (
+                          <p>
+                            <strong>Website:</strong>{" "}
+                            {viewedCredential.fields.website}
+                          </p>
+                        )}
+                      </div>
+                    ) : null}
+
+                    <div className="button-group card-actions">
+                      <Button className="btn1" variant="primary" onClick={() => initiateView(cred)}>
+                        View
+                      </Button>
+                      <Button className="btn1" variant="danger" onClick={() => initiateDelete(cred)}>
+                        Delete
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </main>
         </div>
       </div>
     </div>

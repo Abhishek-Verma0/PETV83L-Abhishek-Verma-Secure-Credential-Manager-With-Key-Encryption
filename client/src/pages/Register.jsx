@@ -154,7 +154,14 @@ const Register = () => {
   return (
       <div className='auth-container'>
           <div className='auth-box'>
-              <h2>Register</h2>
+              <div className="auth-header">
+                <img src="/lock-icon.svg" alt="SecureCred" className="site-logo" />
+                <div className="site-titles">
+                  <h1 className="site-title">SecureCred</h1>
+                  <p className="site-subtitle">Credential manager with key encryption</p>
+                </div>
+              </div>
+              <h2>Create your account</h2>
               {error && <div className='error-alert'>{error}</div>}
               {success && <div className='success-alert'>{success}</div>}
               
@@ -205,8 +212,8 @@ const Register = () => {
                 <input type="checkbox" id="terms" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)}/>
                 <label className="terms">
                     By continuing, I agree to the
-                    <button class="link" onClick={() => setShowContent('terms')}>Terms of Use</button>{' '}&{' '}
-                    <button class="link" onClick={() => setShowContent('privacy')}>Privacy Policy</button>
+                    <button className="link" onClick={() => setShowContent('terms')}>Terms of Use</button>{' '}&{' '}
+                    <button className="link" onClick={() => setShowContent('privacy')}>Privacy Policy</button>
                 </label>
             </div>
           </div>
