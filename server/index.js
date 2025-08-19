@@ -55,9 +55,11 @@ if (process.env.NODE_ENV === "production") {
   const clientPath = path.join(__dirname, "../client/dist"); // or build if CRA
   app.use(express.static(clientPath));
 
-  app.get("/*", (req, res) => {
+  app.use((req, res, next) => {
     if (!req.url.startsWith("/api")) {
       res.sendFile(path.join(clientPath, "index.html"));
+    } else {
+      next();
     }
   });
 }
