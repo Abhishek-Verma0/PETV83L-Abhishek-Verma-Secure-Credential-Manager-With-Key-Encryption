@@ -272,7 +272,13 @@
   .dashboard-container {
     padding: 1rem;
   }
-
+ .nav-authenticated {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+  }
   .dashboard-header {
     flex-direction: row;
     align-items: center;
@@ -320,6 +326,7 @@
     height: 38px;
     font-size: 16px;
   }
+
 }
 
 /* Mobile Styles (up to 767px) */
@@ -442,8 +449,8 @@
 
   /* Theme toggle for mobile */
   .nav-authenticated {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex;
+    
   }
 
   .theme-toggle {
@@ -509,8 +516,9 @@
 
   .nav-authenticated {
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.15rem;
     align-items: center;
+    
   }
 }
 
