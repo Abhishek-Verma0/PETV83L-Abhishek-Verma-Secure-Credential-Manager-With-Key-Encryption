@@ -80,7 +80,7 @@ const Landing = () => {
               <p>Continuous monitoring and security updates</p>
             </div>
             <div className="security-point">
-              <h3>👤 Two-Factor Authentication -Coming Soon</h3>
+              <h3>👤 Two-Factor Authentication</h3>
               <p>Extra layer of security for your account</p>
             </div>
           </div>
