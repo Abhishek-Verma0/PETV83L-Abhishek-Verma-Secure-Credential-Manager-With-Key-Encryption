@@ -16,7 +16,7 @@ This document explains how to deploy the Secure Credential Manager project on **
 1. Fork this repository.  
 2. Clone it locally:  
    ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
+   https://github.com/Abhishek-Verma0/PETV83L-Abhishek-Verma-Secure-Credential-Manager-With-Key-Encryption.git
    cd <repo-name>
 3. Push any necessary changes to your fork.
 4. On Render, connect your forked GitHub repo to a Web Service.
