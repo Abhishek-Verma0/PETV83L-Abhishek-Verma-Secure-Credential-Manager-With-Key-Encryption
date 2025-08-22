@@ -27,10 +27,19 @@ const passwordResetRoutes = require("./routes/passwordReset");
 
 //  use routes
 
-app.use("/api/auth", authRoutes);
-app.use("/api/credentials", credentialRoutes);
-app.use("/api/mfa", mfaRoutes);
-app.use("/api/auth", passwordResetRoutes);
+try {
+  app.use("/api/auth", require("./routes/auth"));
+  console.log("auth routes loaded");
+  app.use("/api/credentials", require("./routes/credentials"));
+  console.log("credentials routes loaded");
+  app.use("/api/mfa", require("./routes/mfa"));
+  console.log("mfa routes loaded");
+  app.use("/api/password-reset", require("./routes/passwordReset"));
+  console.log("passwordReset routes loaded");
+} catch (err) {
+  console.error("Error loading routes:", err);
+}
+
 
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
@@ -41,17 +50,19 @@ app.get("/api/health", (req, res) => {
 
 //  for deployment
 
-// if (process.env.NODE_ENV === "production") {
-//   const __dirname1 = path.resolve();
-//   const clientPath = path.join(__dirname1, "../client/dist");
+if (process.env.NODE_ENV === "production") {
+  const path = require("path");
+  const clientPath = path.join(__dirname, "../client/dist"); // or build if CRA
+  app.use(express.static(clientPath));
 
-//   app.use(express.static(clientPath));
-
-//   app.get("*", (req, res) => {
-//     if (!req.url.startsWith("/api"))
-//       res.sendFile(path.join(clientPath, "index.html"));
-//   });
-// }
+  app.use((req, res, next) => {
+    if (!req.url.startsWith("/api")) {
+      res.sendFile(path.join(clientPath, "index.html"));
+    } else {
+      next();
+    }
+  });
+}
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, '0.0.0.0', (err) => {
