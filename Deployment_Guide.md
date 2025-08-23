@@ -78,3 +78,25 @@ Upgrade to a paid Twilio plan for unrestricted MFA SMS.
 
 
 ✅ Deployment should now work smoothly under a single Render web service.
+
+
+## Local Development Setup
+For continuous testing and development, you can run the project locally.
+
+1. Copy the example environment file:
+   cp .env.local.example .env
+
+2. Ensure MongoDB is running locally (default URL: mongodb://localhost:27017/credentialmanager).
+
+3. Install dependencies:
+   npm install
+
+4. Start the project in development mode:
+   npm run dev
+
+~Server will run at: http://localhost:5000
+~Client will run at: http://localhost:5173
+
+⚠️ Note: The '.env.local.example' file only provides placeholder values. Each developer should create their own .env for local use.
+
+✅ That’s all.  
