@@ -1,199 +1,134 @@
 :root {
-    --primary-color: #3498db;
-    --primary-hover: #2980b9;
-    --secondary-color: #2c3e50;
-    --secondary-hover: #34495e;
-    --background-color: #f5f7fa;
-    --text-color: #2c3e50;
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
-    --section-padding: 4rem 2rem;
-    --max-width: 1200px;
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-    --footer-bg: #2c3e50;
-    --footer-text: #ecf0f1;
-    --footer-muted: #bdc3c7;
-    --footer-border: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] {
-    --footer-bg: #111827;
-    --footer-text: #d1d5db;
-    --footer-muted: #9ca3af;
-    --footer-border: rgba(255, 255, 255, 0.1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  --primary: #3498db;
+  --primary-hover: #2980b9;
+  --dark-bg: #1e1e1e;
+  --text-light: #ffffff; /* force all text white */
+  --border-color: rgba(255, 255, 255, 0.2);
+  --transition: all 0.3s ease;
 }
 
 .footer {
-    background: var(--footer-bg);
-    color: var(--footer-text);
-    padding: 3.5rem 2rem 1.5rem;
-    transition: var(--transition);
+  background: var(--dark-bg);
+  color: var(--text-light);
+  padding: 3rem 1rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600; /* bold for all */
 }
 
-.footer-content {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 2.5rem;
-    align-items: start;
-}
-
-.footer-brand {
-    padding-right: 1rem;
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
 }
 
 .footer-logo {
-    font-size: 1.4rem;
-    margin-bottom: 0.25rem;
-    color: var(--footer-text);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
 }
 
-.footer-tag {
-    color: var(--footer-muted);
-    font-size: 0.95rem;
-    margin-bottom: 0.35rem;
-}
-
-.footer-desc {
-    color: var(--footer-text);
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
-}
-
-.footer-contact h4,
-.footer-nav h4 {
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    color: var(--footer-text);
-}
-
-.footer-contact address,
-.footer-contact p {
-    color: var(--footer-text);
-    font-style: normal;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
-}
-
-.footer-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-nav li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-link {
-    color: var(--footer-text);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.footer-link:hover,
-.social:hover {
-    color: var(--primary-color);
-}
-
-.footer-bottom {
-    max-width: var(--max-width);
-    margin: 3rem auto 0;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--footer-border);
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--footer-muted);
-}
-
-.footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.footer-legal {
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
-}
-
-.sep {
-    color: var(--footer-muted);
+.footer-tagline {
+  color: #fff;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem;
+  font-weight: 600;
 }
 
 .social-icons {
-    display: flex;
-    gap: 0.8rem;
-    align-items: center;
+  display: flex;
+  gap: 0.8rem;
 }
 
-.social {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    color: var(--footer-text);
-    background: transparent;
-    transition: var(--transition);
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
-.social svg {
-    display: block;
+.social-icons a:hover {
+  background: var(--primary);
+  color: white;
 }
 
-.back-to-top {
-    display: inline-block;
-    margin-top: 0.6rem;
-    padding: 0.4rem 0.7rem;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.04);
-    color: var(--footer-text);
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: var(--transition);
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+  font-weight: 700;
 }
 
-.back-to-top:hover {
-    background: rgba(255,255,255,0.06);
-    color: var(--primary-color);
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.sr-only {
-    position: absolute !important;
-    height: 1px; width: 1px;
-    overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap; border: 0; padding: 0; margin: -1px;
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.footer-links a:hover {
+  color: var(--primary);
 }
 
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-        text-align: left;
-    }
+.footer-contact p {
+  margin: 0.3rem 0;
+  color: #fff;
+  font-weight: 600;
+}
 
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.6rem;
-    }
+.footer-contact a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.footer-contact a:hover {
+  color: var(--primary);
+}
 
-    .footer-brand,
-    .footer-contact,
-    .footer-nav,
-    .footer-social {
-        text-align: center;
-    }
+.footer-bottom {
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer-legal {
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.footer-legal a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.footer-legal a:hover {
+  color: var(--primary);
+}
+
+.sep {
+  color: #fff;
+  font-weight: 600;
 }

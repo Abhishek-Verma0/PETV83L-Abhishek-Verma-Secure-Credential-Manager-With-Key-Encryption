@@ -1,11 +1,40 @@
+/* Footer styles for light mode */
+.footer {
+    background: #f4f8ff;
+    color: #0f1724;
+}
+/* Force all text to be black in light mode */
 :root {
+    --all-text-black: #000;
+}
+
+body:not([data-theme="dark"]),
+body:not([data-theme="dark"]) * {
+    color: #000 !important;
+}
+
+/* Make text inside feature, security, CTA card, and footer white in light mode */
+body:not([data-theme="dark"]) .feature,
+body:not([data-theme="dark"]) .feature *,
+body:not([data-theme="dark"]) .security-point,
+body:not([data-theme="dark"]) .security-point *,
+body:not([data-theme="dark"]) .cta-card,
+body:not([data-theme="dark"]) .cta-card *,
+
+body:not([data-theme="dark"]),
+body:not([data-theme="dark"]) * {
+    color: #000 !important;
+}
+
+:root {
+    --all-text-black: #000;
     /* Primary palette: fresh blue */
     --primary-color: #3b82f6; /* blue-500 */
     --primary-hover: #2563eb; /* blue-600 */
     --secondary-color: #0b2545; /* deep indigo for headings */
     --secondary-hover: #0f3768;
     --background-color: #f4f8ff; /* very light blue tint */
-    --text-color: #0f1724; /* near-black for crisp contrast */
+    --text-color: #000; /* force black for all text in light mode */
     --border-radius: 8px;
     --transition: all 0.3s ease;
     --section-padding: 4rem 2rem;
@@ -19,6 +48,18 @@
     --tagline-color: #4b5563;
     --muted-text: #475569;
     --hero-gradient: linear-gradient(135deg, #eef4ff 0%, #f8fbff 60%);
+}
+
+/* Make text inside feature, security, CTA card, and footer white in light mode */
+body:not([data-theme="dark"]) .feature,
+body:not([data-theme="dark"]) .feature *,
+body:not([data-theme="dark"]) .security-point,
+body:not([data-theme="dark"]) .security-point *,
+body:not([data-theme="dark"]) .cta-card,
+body:not([data-theme="dark"]) .cta-card *,
+body:not([data-theme="dark"]) .footer,
+body:not([data-theme="dark"]) .footer * {
+    color: #fff !important;
 }
 
 [data-theme="dark"] {
@@ -77,18 +118,17 @@
     max-width: var(--max-width);
     width: 100%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 460px;
-    gap: 2.5rem;
-    /* center content but allow small upward offset via transform */
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
 }
 
 .hero-copy {
-    text-align: left;
+    text-align: center;
     transition: transform 0.35s var(--transition);
-    /* smaller nudge so text is readable but not cramped */
-    transform: translateY(-10%);
+    transform: none;
     max-width: 680px;
 }
 

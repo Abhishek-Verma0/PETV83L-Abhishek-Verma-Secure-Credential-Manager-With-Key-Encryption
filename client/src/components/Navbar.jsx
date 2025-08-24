@@ -66,7 +66,7 @@ const Navbar = () => {
             <span className="brand-text">SecureCreds</span>
           </Link>
         </div>
-
+        <div style={{ flex: 1 }} />
         <button
           className={`nav-toggle ${mobileOpen ? 'open' : ''}`}
           aria-controls="primary-navigation"
@@ -76,28 +76,19 @@ const Navbar = () => {
         >
           <span className="hamburger" />
         </button>
-
         <div ref={menuRef} className={`nav-menu ${mobileOpen ? 'open' : ''}`} id="primary-navigation">
           <div className="nav-left">
             <ThemeToggle />
-            {!isAuthenticated && (
-              <>
-                <button type="button" className="nav-link" onClick={() => handleScroll('security')}>Security</button>
-                <button type="button" className="nav-link" onClick={() => handleScroll('about')}>Features</button>
-              </>
-            )}
           </div>
-
           <div className="nav-right">
             {isAuthenticated ? (
-
-                <div className="nav-authenticated">
-                  <div className="nav-authenticated-actions">
-                    <NavLink to="/dashboard" className="nav-link" onClick={() => setMobileOpen(false)}>Dashboard</NavLink>
-                    <NavLink to="/mfa" className="nav-link" onClick={() => setMobileOpen(false)}>MFA Settings</NavLink>
-                    <button className="nav-link" onClick={handleLogout}>Logout</button>
-                  </div>
+              <div className="nav-authenticated">
+                <div className="nav-authenticated-actions">
+                  <NavLink to="/dashboard" className="nav-link" onClick={() => setMobileOpen(false)}>Dashboard</NavLink>
+                  <NavLink to="/mfa" className="nav-link" onClick={() => setMobileOpen(false)}>MFA Settings</NavLink>
+                  <button className="nav-link" onClick={handleLogout}>Logout</button>
                 </div>
+              </div>
             ) : (
               <div className="nav-unauthenticated">
                 <Link to="/login" className="btn btn-primary" onClick={() => setMobileOpen(false)}>Login</Link>

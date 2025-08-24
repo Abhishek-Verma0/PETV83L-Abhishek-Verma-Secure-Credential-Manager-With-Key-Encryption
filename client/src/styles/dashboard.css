@@ -1,358 +1,225 @@
 :root {
-    --primary-color: #3498db;
-    --primary-hover: #2980b9;
-    --secondary-color: #2c3e50;
-    --secondary-hover: #34495e;
-    --background-color: #f5f7fa;
-    --text-color: #2c3e50;
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
-    --section-padding: 4rem 2rem;
-    --max-width: 1200px;
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-    --card-bg: white;
-    --border-color: #ddd;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --border-color: #333;
+  --text-color: #eaeaea;
+  --muted-text: #aaa;
+  --primary-color: #3b82f6; /* Blue */
+  --primary-hover: #2563eb;
+  --danger-color: #ef4444;
+  --success-color: #22c55e;
+  --radius: 6px;
+  --transition: all 0.2s ease;
+}
+
+/* Light mode overrides */
+@media (prefers-color-scheme: light) {
+  :root {
+    --card-bg: #f7f7fa;
+    --bg-color: #f4f6fb;
+    --border-color: #d1d5db;
+    --text-color: #222;
     --muted-text: #666;
-    --details-bg: #f8f9fa;
-    --error-bg: #fde8e8;
-    --success-bg: #e8f8f0;
-    --empty-state-bg: #f8f9fa;
-    --empty-state-text: #6c757d;
+  }
 }
 
-[data-theme="dark"] {
-    --card-bg: #1e1e1e;
-    --border-color: #404040;
-    --muted-text: #b3b3b3;
-    --details-bg: #2d2d2d;
-    --error-bg: #3f1f1f;
-    --success-bg: #1f3f2f;
-    --empty-state-bg: #2d2d2d;
-    --empty-state-text: #9ca3af;
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Container */
 .dashboard-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
+/* Header */
 .dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .dashboard-header .header-left {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard-header h1 {
-    font-size: 1.6rem;
-    color: var(--text-color);
-    margin-bottom: 0.25rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .dashboard-header .header-sub {
-    font-size: 0.95rem;
-    color: var(--muted-text);
+  font-size: 0.95rem;
+  color: var(--muted-text);
 }
 
+/* Section header */
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
 }
 
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    align-items: start;
+.section-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
-
-.credentials-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 18px;
-    margin-top: 4px;
-}
-
-.credentials-list.is-empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52vh; /* center within most viewports */
-}
-
-.credential-card {
-    background: var(--card-bg);
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
-}
-
-.credential-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-.credential-card .cred-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.cred-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-    color: white;
-    font-weight: 700;
-    font-size: 1.05rem;
-    flex-shrink: 0;
-}
-
-.credential-card h3 {
-    margin: 0;
-    font-size: 1.05rem;
-    color: var(--text-color);
-}
-
-.credential-card p {
-    margin-bottom: 8px;
-    color: var(--muted-text);
-}
-
-.card-actions {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-}
-
-.add-form {
-    background: var(--card-bg);
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-}
-
-.credential-details {
-    background: var(--details-bg);
-    padding: 0.85rem;
-    border-radius: 6px;
-    box-shadow: var(--shadow-sm);
-    margin: 0.9rem 0;
-    border-left: 4px solid var(--primary-color);
-    transition: var(--transition);
-}
-
-.credential-details h3 {
-    margin-bottom: 20px;
-    color: var(--text-color);
-}
-
-.credential-details p {
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    color: var(--muted-text);
-}
-
-.credential-details strong {
-    color: var(--text-color);
-    margin-right: 0.5rem;
-}
-
-.credential-details button {
-    margin-top: 20px;
-}
-
-/* Credential Form Styles */
 .add-credential-form {
-    background: var(--card-bg);
-    padding: 1.25rem 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 1.25rem;
-    box-shadow: var(--shadow-sm);
-    width: 100%;
-    max-width: 100%;
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-}
-
-.add-credential-form .form-group {
-    margin-bottom: 1.5rem;
-    width: 100%;
+  background: var(--card-bg);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  
+  /* NEW: make it compact */
+  max-width: 600px;
+  margin: 1rem auto; /* center horizontally */
 }
 
 .add-credential-form .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px 18px;
-        align-items: start;
-}
-
-.add-credential-form .form-grid .form-group {
-        margin-bottom: 0.75rem;
-}
-
-.form-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 0.75rem;
-        margin-top: 0.75rem;
-}
-
-@media screen and (max-width: 767px) {
-    .add-credential-form .form-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .form-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
-
-.add-credential-form .form-input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 0.375rem;
-    font-size: 1rem;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    transition: var(--transition);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
 
 .add-credential-form h3 {
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.add-credential-form .form-group {
-    margin-bottom: 0.9rem;
-}
-
+/* Buttons inside form aligned to right */
 .add-credential-form .button-group {
-    justify-content: flex-start;
-    gap: 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
-.add-credential-form .button-group {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    width: 100%;
-    justify-content: flex-end;
+/* Add more gap between Confirm and Cancel buttons in PasswordPrompt */
+.password-prompt .button-group {
+  display: flex;
+  gap: 6rem;
 }
 
-.add-credential-form .button-group button {
-    min-width: 120px;
+/* Credential cards */
+.credentials-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
 }
 
-/* Alert styles */
+.credential-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.credential-card:hover {
+  border-color: var(--primary-color);
+}
+
+.credential-card h3 {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Add gap between View and Delete buttons in card actions */
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.credential-details {
+  background: #222;
+  border: 1px solid var(--border-color);
+  padding: 0.85rem;
+  border-radius: var(--radius);
+  margin: 0.9rem 0;
+}
+
+.credential-details p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+.credential-details strong {
+  color: var(--text-color);
+}
+
+/* Buttons */
+button,
+.btn1 {
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+button.primary,
+.btn1.primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+button.primary:hover,
+.btn1.primary:hover {
+  background: var(--primary-hover);
+}
+
+button.secondary,
+.btn1.secondary {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+button.secondary:hover,
+.btn1.secondary:hover {
+  background: #2a2a2a;
+}
+
+/* Alerts */
 .error-alert {
-    background-color: var(--error-bg);
-    color: #e74c3c;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-    transition: var(--transition);
+  background: #2a1a1a;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+  padding: 0.8rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
 }
 
 .success-alert {
-    background-color: var(--success-bg);
-    color: #27ae60;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-    transition: var(--transition);
+  background: #1a2a1a;
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+  padding: 0.8rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
 }
 
+/* Empty state */
 .empty-state {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 220px;
-    text-align: center;
-    padding: 1.6rem;
-    background: var(--empty-state-bg);
-    border-radius: 8px;
-    margin: 1rem 0;
-    color: var(--muted-text);
-    transition: var(--transition);
-}
-
-.empty-state p {
-    color: var(--empty-state-text);
-    font-size: 1.1rem;
-}
-
-.btn1 {
-    margin: 0.75rem;
-}
-
-.card-actions {
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.header-actions-inline button {
-    min-width: 110px;
-}
-
-[data-theme="dark"] .cred-avatar {
-    background: linear-gradient(135deg, #2b9bd3, #1f78b4);
-}
-
-/* Keep the dashboard right column (hero/right box) in light style even in dark mode */
-[data-theme="dark"] .dashboard-container .right-pane,
-[data-theme="dark"] .dashboard-container .right-pane .credentials-list,
-[data-theme="dark"] .dashboard-container .right-pane .credential-card,
-[data-theme="dark"] .dashboard-container .right-pane .add-credential-form,
-[data-theme="dark"] .dashboard-container .right-pane .empty-state,
-[data-theme="dark"] .dashboard-container .right-pane .credential-details {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border-color: #e6e6e6 !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important;
-}
-
-[data-theme="dark"] .dashboard-container .right-pane .credential-card h3,
-[data-theme="dark"] .dashboard-container .right-pane .credential-card p,
-[data-theme="dark"] .dashboard-container .right-pane .credential-details p {
-    color: #111111 !important;
-}
-
-[data-theme="dark"] .dashboard-container .right-pane .btn1,
-[data-theme="dark"] .dashboard-container .right-pane .button-group button {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #e6e6e6 !important;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  text-align: center;
+  border-radius: var(--radius);
+  color: var(--muted-text);
 }

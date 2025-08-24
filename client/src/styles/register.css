@@ -45,6 +45,10 @@
     padding: 20px;
 }
 
+body:not([data-theme="dark"]) .auth-container {
+    background: #f4f8ff !important;
+}
+
 .auth-box {
     background: var(--auth-box-bg);
     padding: 30px;

@@ -23,7 +23,7 @@
     --secondary-hover: #6c757d;
     --background-color: #121212;
     --text-color: #ffffff; /* This makes text white in dark mode */
-    --navbar-bg: #1e1e1e;
+    --navbar-bg: #111827;
     --navbar-hover: #2d2d2d;
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -50,10 +50,10 @@
 .nav-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
+    gap: 7rem;
 }
 
 .nav-logo .brand {
@@ -188,7 +188,8 @@
 
 /* layout inside menu */
 .nav-left { display:flex; gap:0.6rem; align-items:center; }
-.nav-right { display:flex; gap:0.9rem; align-items:center; }
+.nav-right { display:flex; gap:0.9rem; align-items:center; margin-left: auto; }
+.nav-spacer { flex: 1; }
 
 .nav-unauthenticated .btn { margin-left: 0.8rem; }
 
