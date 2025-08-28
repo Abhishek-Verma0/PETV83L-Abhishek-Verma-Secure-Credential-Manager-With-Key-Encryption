@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FormInput from '../components/FormInput';
+import FormInput from '../components/forminput';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';

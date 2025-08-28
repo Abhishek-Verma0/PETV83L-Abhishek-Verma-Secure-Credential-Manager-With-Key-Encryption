@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../auth/AuthContext";
-import FormInput from "./FormInput";
+import FormInput from "./forminput";
 import Button from "./Button";
 import "../styles/passwordPrompt.css";
 const PasswordPrompt = ({ onSubmit, onCancel, action = "save" }) => {

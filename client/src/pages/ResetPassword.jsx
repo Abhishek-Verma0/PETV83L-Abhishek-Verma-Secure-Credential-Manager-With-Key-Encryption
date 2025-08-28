@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import FormInput from '../components/FormInput';
+import FormInput from '../components/forminput';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import FormInput from "../components/FormInput";
+import FormInput from "../components/forminput";
 import { useAuth } from "../auth/AuthContext";
 import {
   getCredentials,
@@ -181,6 +181,7 @@ const Dashboard = () => {
               value={newCredential.password}
               onChange={handleChange}
               placeholder="Enter password"
+              showStrength={true}
             />
             <FormInput
               label="Website"

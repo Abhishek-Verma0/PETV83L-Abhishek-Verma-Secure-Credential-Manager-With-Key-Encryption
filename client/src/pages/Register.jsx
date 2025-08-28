@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Link, useNavigate} from "react-router-dom"
 
 import Button from '../components/Button'
-import FormInput from '../components/FormInput'
+import FormInput from '../components/forminput'
 import { useAuth } from '../auth/AuthContext'
 import { register } from '../service/auth'
 import "../styles/register.css"
@@ -181,6 +181,7 @@ const Register = () => {
                       onChange={handleChange}
                       name="password"
                       required
+                      showStrength={true}
                   />
 
                   <FormInput label="Confirm Password"
@@ -189,6 +190,7 @@ const Register = () => {
                       onChange={handleChange}
                       name="confirmPassword"
                       required
+                      showStrength={false}
                   />
 
                   <Button type='submit' fullwidth>
