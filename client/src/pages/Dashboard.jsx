@@ -14,6 +14,7 @@ import ScreenshotPrevention from "../components/ScreenshotPrevention";
 import "../styles/screenshotPrevention.css";
 import '../styles/dashboard.css'
 import '../styles/responsive.css'
+import ThemeToggle from '../components/ThemeToggle';
 const Dashboard = () => {
   const [credentials, setCredentials] = useState([]);
   const [error, setError] = useState("");
@@ -29,6 +30,10 @@ const Dashboard = () => {
     password: "",
     website: "",
   });
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterField, setFilterField] = useState("title");
+  const [sortField, setSortField] = useState("title");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -140,7 +145,32 @@ const Dashboard = () => {
       <ScreenshotPrevention />
       <header className="dashboard-header">
         <h1>Your Secure Credentials</h1>
+        <ThemeToggle />
       </header>
+      <div className="search-filter-bar" style={{display:'flex',gap:'1rem',alignItems:'center',marginBottom:'1.5rem'}}>
+        <input
+          type="text"
+          placeholder="Search credentials..."
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          style={{padding:'0.5rem',borderRadius:'4px',border:'1px solid #ccc',width:'220px'}}
+        />
+        <select value={filterField} onChange={e => setFilterField(e.target.value)} style={{padding:'0.5rem',borderRadius:'4px',border:'1px solid #ccc'}}>
+          <option value="title">Title</option>
+          <option value="username">Username</option>
+          <option value="website">Website</option>
+        </select>
+        <select value={sortField} onChange={e => setSortField(e.target.value)} style={{padding:'0.5rem',borderRadius:'4px',border:'1px solid #ccc'}}>
+          <option value="title">Sort by Title</option>
+          <option value="username">Sort by Username</option>
+          <option value="website">Sort by Website</option>
+        </select>
+        <select value={sortOrder} onChange={e => setSortOrder(e.target.value)} style={{padding:'0.5rem',borderRadius:'4px',border:'1px solid #ccc'}}>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+        <Button onClick={handleExport} variant="secondary">Export CSV</Button>
+      </div>
 
       {/* Only show non-credential related errors in dashboard */}
       {error && !showPasswordPrompt && (
@@ -155,6 +185,45 @@ const Dashboard = () => {
             {showAddForm ? "Cancel" : "Add New"}
           </Button>
         </div>
+
+        {/* Filter credentials based on search/filter */}
+        {!showAddForm && (
+          <div className="credentials-list">
+            {credentials
+              .filter(cred => {
+                const field = filterField === "username" ? cred.fields.username : filterField === "website" ? cred.fields.website : cred.title;
+                return field && field.toLowerCase().includes(searchTerm.toLowerCase());
+              })
+              .sort((a, b) => {
+                const aField = sortField === "username" ? a.fields.username : sortField === "website" ? a.fields.website : a.title;
+                const bField = sortField === "username" ? b.fields.username : sortField === "website" ? b.fields.website : b.title;
+                if (!aField) return 1;
+                if (!bField) return -1;
+                if (sortOrder === "asc") {
+                  return aField.localeCompare(bField);
+                } else {
+                  return bField.localeCompare(aField);
+                }
+              })
+              .map(credential => (
+                <div className="credential-card" key={credential._id}>
+                  <h3>{credential.title}</h3>
+                  <p><strong>Username:</strong> {credential.fields.username}</p>
+                  <p><strong>Website:</strong> {credential.fields.website}</p>
+                  <div className="card-actions">
+                    <Button onClick={() => initiateView(credential)} variant="secondary">View</Button>
+                    <Button onClick={() => initiateDelete(credential)} variant="danger">Delete</Button>
+                  </div>
+                </div>
+              ))}
+            {credentials.filter(cred => {
+              const field = filterField === "username" ? cred.fields.username : filterField === "website" ? cred.fields.website : cred.title;
+              return field && field.toLowerCase().includes(searchTerm.toLowerCase());
+            }).length === 0 && (
+              <div className="empty-state">No credentials found.</div>
+            )}
+          </div>
+        )}
 
         {showAddForm && (
           <div className="add-credential-form">
@@ -278,3 +347,36 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+function handleExport() {
+  const filteredCreds = credentials.filter(cred => {
+    const field = filterField === "username" ? cred.fields.username : filterField === "website" ? cred.fields.website : cred.title;
+    return field && field.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+  const sortedCreds = [...filteredCreds].sort((a, b) => {
+    const aField = sortField === "username" ? a.fields.username : sortField === "website" ? a.fields.website : a.title;
+    const bField = sortField === "username" ? b.fields.username : sortField === "website" ? b.fields.website : b.title;
+    if (!aField) return 1;
+    if (!bField) return -1;
+    if (sortOrder === "asc") {
+      return aField.localeCompare(bField);
+    } else {
+      return bField.localeCompare(aField);
+    }
+  });
+  const csvRows = ["Title,Username,Password,Website"];
+  sortedCreds.forEach(cred => {
+    csvRows.push(`"${cred.title}","${cred.fields.username}","${cred.fields.password}","${cred.fields.website}"`);
+  });
+  const csvContent = csvRows.join("\n");
+  const blob = new Blob([csvContent], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "credentials.csv";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
