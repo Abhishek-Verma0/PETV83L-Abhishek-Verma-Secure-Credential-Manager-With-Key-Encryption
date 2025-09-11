@@ -21,6 +21,7 @@ import SimpleQRTest from "./components/SimpleQRTest";
 import MFATestPage from "./components/MFATestPage";
 import QuickLogin from "./components/QuickLogin";
 import './styles/responsive.css'
+import BackToTopButton from "./components/BackToTopButton";
 
 const App = () => {
   // Initialize theme on app load
@@ -120,6 +121,8 @@ const App = () => {
               }
             />
           </Routes>
+           {/* <-- Floating Back to Top button for all pages --> */}
+          <BackToTopButton />
         </div>
       </AuthProvider>
     </Router>
