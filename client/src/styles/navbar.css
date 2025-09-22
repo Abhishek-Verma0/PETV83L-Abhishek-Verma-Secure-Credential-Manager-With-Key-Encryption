@@ -158,3 +158,76 @@
         margin-left: 0.5rem;
     }
 }
+/*Logout Confirmation modal styles*/
+/* overlay covers the entire screen */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px) saturate(120%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: overlayFade 0.3s ease forwards;
+}
+
+/* modal box */
+.modal-content {
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  min-width: 320px;
+  max-width: 400px;
+  text-align: center;
+  border: 2px solid var(--primary-color);
+  animation: modalIn 0.3s ease forwards;
+  transform-origin: center;
+}
+
+/* heading */
+.modal-content h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* actions */
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-actions button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-actions button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px var(--primary-color);
+}
+
+/* animations */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(-10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.9) translateY(-10px); }
+}
+
+/* Dark mode tweaks */
+html[data-theme="dark"] .modal-content {
+  background: rgba(30, 30, 30, 0.9);
+  border-color: var(--primary-hover);
+}
