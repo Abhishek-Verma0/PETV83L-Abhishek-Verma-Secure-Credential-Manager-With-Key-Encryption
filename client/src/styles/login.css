@@ -118,3 +118,26 @@
     text-align: center;
     transition: var(--transition);
 }
+.back-home {
+  position:fixed;
+  bottom: 45px;
+  left: 30px;
+}
+
+.btn-home {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color:#1a78b6;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-style: normal;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-home:hover {
+  background-color: var(--secondary-hover);
+  box-shadow: var(--shadow-md);
+}

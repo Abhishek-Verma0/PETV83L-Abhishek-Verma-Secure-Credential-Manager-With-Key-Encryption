@@ -120,7 +120,13 @@ const Login = () => {
           Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
+      <div className="back-home">
+  <Link to="/" className="btn-home">
+     Back to Home
+  </Link>
+</div>
     </div>
+
   );
 };
 

@@ -210,6 +210,11 @@ const Register = () => {
                 </label>
             </div>
           </div>
+            <div className="back-home">
+            <Link to="/" className="btn-home">
+               Back to Home
+            </Link>
+          </div>
           <Popup contentType={showContent} onClose={() => setShowContent(null)} />
     </div>
   )

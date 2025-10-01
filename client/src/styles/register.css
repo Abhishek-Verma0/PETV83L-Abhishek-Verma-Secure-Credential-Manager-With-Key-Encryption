@@ -194,3 +194,22 @@
 .popup-close-btn:hover {
     color: var(--primary-color);
 }
+.back-home {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.btn-home {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #007bff; /* primary color */
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.btn-home:hover {
+  background-color: #0056b3;
+}
+
