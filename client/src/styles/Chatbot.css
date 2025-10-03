@@ -60,8 +60,8 @@ body.light-theme {
 ----------------------------------- */
 .chatbot-container {
   position: fixed;
-  bottom: 40px;
-  left: 40px;
+  bottom: 80px; /* MODIFIED: Increased from 60px to shift button up */
+  left: 25px;
   z-index: 1000;
   font-size: 15px;
 }
@@ -91,9 +91,9 @@ body.light-theme {
 /* 3. CHATBOT WINDOW
 ----------------------------------- */
 .chatbot-window {
-  width: 400px;
+  width: 350px;
   max-width: 90vw;
-  height: 500px;
+  height: 460px;
   max-height: 80vh;
   background: var(--chat-bg);
   backdrop-filter: blur(12px);
