@@ -162,7 +162,7 @@
     transition: var(--transition);
 }
 
-/* features section */
+/* ===== Features Section ===== */
 .features-section {
     padding: var(--section-padding);
     background: var(--background-color);
@@ -172,14 +172,16 @@
 .features-section h2 {
     text-align: center;
     margin-bottom: 3rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     color: var(--text-color);
-    transition: var(--transition);
+    font-weight: 600;
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
+    perspective: 1200px; /* For 3D tilt effect */
 }
 
 .feature {
@@ -187,28 +189,62 @@
     background: var(--card-bg);
     color: var(--card-text);
     border-radius: var(--border-radius);
-    transition: var(--transition);
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08), 0 3px 10px rgba(0,0,0,0.04);
+    transition: transform 0.4s cubic-bezier(.03,.98,.52,.99), box-shadow 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
 }
 
+/* Subtle gradient overlay for depth */
+.feature::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.02));
+    border-radius: var(--border-radius);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Hover: Lift + shadow + tilt illusion */
 .feature:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-12px) rotateX(2deg) rotateY(2deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 10px 25px rgba(0,0,0,0.08);
 }
 
+.feature:hover::before {
+    opacity: 1;
+}
+
+/* H3 highlight animation */
 .feature h3 {
-    color: var(--card-text);
-    margin-bottom: 1rem;
-    transition: var(--transition);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    transition: transform 0.4s ease, color 0.3s ease;
 }
 
+.feature:hover h3 {
+    transform: translateY(-4px);
+}
+
+/* Pseudo icon glow effect */
 .feature p {
-    color: var(--card-text);
-    transition: var(--transition);
+    color: var(--muted-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: transform 0.3s ease;
 }
 
-/* security section */
+.feature:hover p {
+    transform: translateY(2px);
+}
+
+/* ===== Security Section ===== */
 .security-section {
     padding: var(--section-padding);
     background: var(--section-bg-alt);
@@ -218,41 +254,100 @@
 .security-section h2 {
     text-align: center;
     margin-bottom: 3rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     color: var(--text-color);
-    transition: var(--transition);
+    font-weight: 600;
 }
 
 .security-points {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
+    perspective: 1200px;
 }
 
 .security-point {
-    text-align: center;
     padding: 2rem;
+    text-align: center;
     background: var(--card-bg);
     color: var(--card-text);
     border-radius: var(--border-radius);
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08), 0 3px 10px rgba(0,0,0,0.04);
+    transition: transform 0.4s cubic-bezier(.03,.98,.52,.99), box-shadow 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.security-point::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(0,0,0,0.02));
+    border-radius: var(--border-radius);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .security-point:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-12px) rotateX(2deg) rotateY(2deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.security-point:hover::before {
+    opacity: 1;
 }
 
 .security-point h3 {
-    color: var(--card-text);
-    margin-bottom: 1rem;
-    transition: var(--transition);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    transition: transform 0.4s ease;
+}
+
+.security-point:hover h3 {
+    transform: translateY(-4px);
 }
 
 .security-point p {
-    color: var(--card-text);
-    transition: var(--transition);
+    color: var(--muted-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: transform 0.3s ease;
 }
+
+.security-point:hover p {
+    transform: translateY(2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .features-grid, .security-points {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .feature, .security-point {
+        padding: 1.5rem;
+    }
+
+    .feature h3, .security-point h3 {
+        font-size: 1.15rem;
+    }
+
+    .feature p, .security-point p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Dark mode tweaks */
+[data-theme="dark"] .feature::before,
+[data-theme="dark"] .security-point::before {
+    background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+}
+
 
 /* contact section */
 .contact-section {
@@ -336,3 +431,4 @@
         width: auto;
     }
 }
+
