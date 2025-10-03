@@ -20,7 +20,8 @@ import QRCodeTest from "./components/QRCodeTest";
 import SimpleQRTest from "./components/SimpleQRTest";
 import MFATestPage from "./components/MFATestPage";
 import QuickLogin from "./components/QuickLogin";
-import './styles/responsive.css'
+import './styles/responsive.css';
+import Chatbot from "./components/Chatbot";
 import BackToTopButton from "./components/BackToTopButton";
 
 const App = () => {
@@ -123,6 +124,7 @@ const App = () => {
           </Routes>
            {/* <-- Floating Back to Top button for all pages --> */}
           <BackToTopButton />
+          <Chatbot />
         </div>
       </AuthProvider>
     </Router>
