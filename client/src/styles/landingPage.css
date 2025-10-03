@@ -83,6 +83,61 @@
     transition: var(--transition);
 }
 
+/* Hero buttons container (land-btn) - keep existing style */
+.land-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+    align-items: center;
+}
+
+/* Buttons inside land-btn (non-CTA) - keep default styling */
+.land-btn .btn {
+    width: 100%;
+    min-width: auto;
+}
+
+/* CTA Button - gradient + hover + glow + shine effect */
+.cta-button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect for CTA button */
+.cta-button:hover {
+    background: linear-gradient(135deg, #5dade2, #3498db); /* lighter gradient */
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25), 0 0 12px #3498db;
+}
+
+/* Animated shine effect */
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+}
+
+.cta-button:hover::after {
+    left: 125%;
+}
+
 /* about section */
 .about-section {
     padding: var(--section-padding);
@@ -228,7 +283,7 @@
     transition: var(--transition);
 }
 
-/* responsive style */
+/* responsive styles */
 @media (max-width: 768px) {
     :root {
         --section-padding: 3rem 1rem;
@@ -250,14 +305,34 @@
         text-align: center;
     }
 
+    /* Stack hero buttons on mobile */
     .land-btn {
         flex-direction: column;
-        gap: 1rem;
-        padding: 0 1rem;
     }
 
     .land-btn .btn {
         width: 100%;
-        min-width: auto;
+    }
+
+    /* CTA buttons full-width on mobile */
+    .cta-button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    /* Make buttons horizontal on tablet+ */
+    .land-btn {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .land-btn .btn {
+        width: auto;
+    }
+
+    .cta-button {
+        width: auto;
     }
 }

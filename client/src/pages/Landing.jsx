@@ -14,7 +14,7 @@ const Landing = () => {
           <p className="tagline">Keep your Password safe and secure</p>
           <div className="land-btn">
             <Link to="/register">
-              <Button variant="primary" size="large">
+              <Button variant="primary" size="large" className="cta-button">
                 Get Started
               </Button>
             </Link>
@@ -97,7 +97,7 @@ const Landing = () => {
             assistance.
           </p>
           <Link to="/register">
-            <Button variant="primary" size="large">
+            <Button variant="primary" size="large" className="cta-button">
               Start Securing Your Passwords
             </Button>
           </Link>
