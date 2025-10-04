@@ -1,9 +1,9 @@
 :root {
+    /* ---- Color Palette & Variables ---- */
     --primary-color: #3498db;
     --primary-hover: #2980b9;
     --secondary-color: #2c3e50;
     --secondary-hover: #34495e;
-    --background-color: #f5f7fa;
     --text-color: #2c3e50;
     --border-radius: 8px;
     --transition: all 0.3s ease;
@@ -14,10 +14,15 @@
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     --card-bg: white;
     --card-text: #2c3e50;
-    --section-bg-alt: white;
     --tagline-color: #7f8c8d;
     --muted-text: #666;
-    --hero-gradient: linear-gradient(135deg, #f5f7fa 0%, #f5f7fa 0%, #c3cfe2 100%);
+
+    /* ---- Backgrounds with subtle SVG patterns ---- */
+    --background-color: #e3e8ed url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='0.5' fill='%23333'/%3E%3C/svg%3E") repeat;
+    --features-bg: #cfd6dd url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%23222'/%3E%3C/svg%3E") repeat;
+    --contact-bg: #cfd6dd url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%23222'/%3E%3C/svg%3E") repeat;
+    --section-bg-alt: #f7f9fb url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%23333'/%3E%3C/svg%3E") repeat;
+    --hero-gradient: linear-gradient(135deg, #cfd6dd 0%, #cfd6dd 50%, #cfd6dd 100%);
 }
 
 [data-theme="dark"] {
@@ -25,19 +30,24 @@
     --primary-hover: #339af0;
     --secondary-color: #e5e5e5;
     --secondary-hover: #6c757d;
-    --background-color: #121212;
     --text-color: #ffffff;
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
     --card-bg: #1e1e1e;
     --card-text: #e5e5e5;
-    --section-bg-alt: #1a1a1a;
     --tagline-color: #b3b3b3;
     --muted-text: #a0a0a0;
-    --hero-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+
+    /* ---- Backgrounds with subtle SVG patterns ---- */
+    --background-color: #16161a url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='0.5' fill='%233a3a3a'/%3E%3C/svg%3E") repeat;
+    --features-bg: #16161a url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%233a3a3a'/%3E%3C/svg%3E") repeat;
+    --contact-bg: #16161a url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%233a3a3a'/%3E%3C/svg%3E") repeat;
+    --section-bg-alt: #1f1f23 url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%233a3a3a'/%3E%3C/svg%3E") repeat;
+    --hero-gradient: linear-gradient(135deg, #16161a 0%, #23232b 50%, #2e2e38 100%);
 }
 
+/* ---- Global Reset ---- */
 * {
     margin: 0;
     padding: 0;
@@ -53,19 +63,67 @@
     transition: var(--transition);
 }
 
-/* hero section */
+/* ---- Updated Hero Section ---- */
 .hero-section {
-    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--section-padding);
-    background: var(--hero-gradient);
     text-align: center;
-    transition: var(--transition);
+    padding: var(--section-padding);
+    background-color: #cfd6dd;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%23222'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle, rgba(52, 152, 219, 0.4) 20%, transparent 20%) 10% 20% / 120px 120px no-repeat,
+        radial-gradient(circle, rgba(52, 152, 219, 0.35) 25%, transparent 25%) 80% 40% / 180px 180px no-repeat,
+        radial-gradient(circle, rgba(52, 152, 219, 0.45) 15%, transparent 15%) 50% 60% / 100px 100px no-repeat,
+        radial-gradient(circle, rgba(52, 152, 219, 0.38) 30%, transparent 30%) 20% 80% / 150px 150px no-repeat,
+        radial-gradient(circle, rgba(52, 152, 219, 0.42) 18%, transparent 18%) 75% 10% / 110px 110px no-repeat,
+        radial-gradient(circle, rgba(52, 152, 219, 0.36) 22%, transparent 22%) 40% 30% / 130px 130px no-repeat;
+    background-blend-mode: overlay;
+    animation: hero-circles 60s linear infinite;
+    z-index: 1;
+}
+
+/* ---- Dark Theme Adjustment ---- */
+[data-theme="dark"] .hero-section {
+    background-color: #16161a;
+}
+
+[data-theme="dark"] .hero-section::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%233a3a3a'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .hero-section::after {
+    background:
+        radial-gradient(circle, rgba(77, 171, 247, 0.15) 20%, transparent 20%) 10% 20% / 120px 120px no-repeat,
+        radial-gradient(circle, rgba(77, 171, 247, 0.12) 25%, transparent 25%) 80% 40% / 180px 180px no-repeat,
+        radial-gradient(circle, rgba(77, 171, 247, 0.18) 15%, transparent 15%) 50% 60% / 100px 100px no-repeat,
+        radial-gradient(circle, rgba(77, 171, 247, 0.14) 30%, transparent 30%) 20% 80% / 150px 150px no-repeat,
+        radial-gradient(circle, rgba(77, 171, 247, 0.16) 18%, transparent 18%) 75% 10% / 110px 110px no-repeat,
+        radial-gradient(circle, rgba(77, 171, 247, 0.13) 22%, transparent 22%) 40% 30% / 130px 130px no-repeat;
+    animation: hero-circles 60s linear infinite;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
 }
 
@@ -83,7 +141,7 @@
     transition: var(--transition);
 }
 
-/* Hero buttons container (land-btn) - keep existing style */
+/* ---- Hero Buttons ---- */
 .land-btn {
     display: flex;
     flex-direction: column;
@@ -92,13 +150,12 @@
     align-items: center;
 }
 
-/* Buttons inside land-btn (non-CTA) - keep default styling */
 .land-btn .btn {
     width: 100%;
     min-width: auto;
 }
 
-/* CTA Button - gradient + hover + glow + shine effect */
+/* CTA Button */
 .cta-button {
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: #fff;
@@ -114,14 +171,12 @@
     overflow: hidden;
 }
 
-/* Hover Effect for CTA button */
 .cta-button:hover {
-    background: linear-gradient(135deg, #5dade2, #3498db); /* lighter gradient */
+    background: linear-gradient(135deg, #5dade2, #3498db);
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(0,0,0,0.25), 0 0 12px #3498db;
 }
 
-/* Animated shine effect */
 .cta-button::after {
     content: '';
     position: absolute;
@@ -138,7 +193,7 @@
     left: 125%;
 }
 
-/* about section */
+/* ---- About Section ---- */
 .about-section {
     padding: var(--section-padding);
     background: var(--section-bg-alt);
@@ -162,10 +217,10 @@
     transition: var(--transition);
 }
 
-/* ===== Features Section ===== */
+/* ---- Features Section ---- */
 .features-section {
     padding: var(--section-padding);
-    background: var(--background-color);
+    background: var(--features-bg);
     transition: var(--transition);
 }
 
@@ -181,7 +236,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2.5rem;
-    perspective: 1200px; /* For 3D tilt effect */
+    perspective: 1200px;
 }
 
 .feature {
@@ -198,7 +253,6 @@
     transform-style: preserve-3d;
 }
 
-/* Subtle gradient overlay for depth */
 .feature::before {
     content: '';
     position: absolute;
@@ -210,7 +264,6 @@
     transition: opacity 0.4s ease;
 }
 
-/* Hover: Lift + shadow + tilt illusion */
 .feature:hover {
     transform: translateY(-12px) rotateX(2deg) rotateY(2deg) scale(1.05);
     box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 10px 25px rgba(0,0,0,0.08);
@@ -220,7 +273,6 @@
     opacity: 1;
 }
 
-/* H3 highlight animation */
 .feature h3 {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
@@ -232,7 +284,6 @@
     transform: translateY(-4px);
 }
 
-/* Pseudo icon glow effect */
 .feature p {
     color: var(--muted-text);
     font-size: 1rem;
@@ -244,7 +295,7 @@
     transform: translateY(2px);
 }
 
-/* ===== Security Section ===== */
+/* ---- Security Section ---- */
 .security-section {
     padding: var(--section-padding);
     background: var(--section-bg-alt);
@@ -322,37 +373,10 @@
     transform: translateY(2px);
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-    .features-grid, .security-points {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .feature, .security-point {
-        padding: 1.5rem;
-    }
-
-    .feature h3, .security-point h3 {
-        font-size: 1.15rem;
-    }
-
-    .feature p, .security-point p {
-        font-size: 0.95rem;
-    }
-}
-
-/* Dark mode tweaks */
-[data-theme="dark"] .feature::before,
-[data-theme="dark"] .security-point::before {
-    background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
-}
-
-
-/* contact section */
+/* ---- Contact Section ---- */
 .contact-section {
     padding: var(--section-padding);
-    background: var(--background-color);
+    background: var(--contact-bg);
     text-align: center;
     transition: var(--transition);
 }
@@ -378,7 +402,7 @@
     transition: var(--transition);
 }
 
-/* responsive styles */
+/* ---- Responsive ---- */
 @media (max-width: 768px) {
     :root {
         --section-padding: 3rem 1rem;
@@ -400,7 +424,6 @@
         text-align: center;
     }
 
-    /* Stack hero buttons on mobile */
     .land-btn {
         flex-direction: column;
     }
@@ -409,14 +432,12 @@
         width: 100%;
     }
 
-    /* CTA buttons full-width on mobile */
     .cta-button {
         width: 100%;
     }
 }
 
 @media (min-width: 768px) {
-    /* Make buttons horizontal on tablet+ */
     .land-btn {
         flex-direction: row;
         justify-content: center;
@@ -432,3 +453,57 @@
     }
 }
 
+/* ---- Dark Mode Feature/Security overlay tweaks ---- */
+[data-theme="dark"] .feature::before,
+[data-theme="dark"] .security-point::before {
+    background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+}
+
+/* ---- Animation for moving backgrounds ---- */
+@keyframes hero-circles {
+    0% {
+        background-position:
+            10% 20%,
+            80% 40%,
+            50% 60%,
+            20% 80%,
+            75% 10%,
+            40% 30%;
+    }
+    25% {
+        background-position:
+            15% 25%,
+            75% 35%,
+            55% 65%,
+            25% 75%,
+            70% 15%,
+            45% 35%;
+    }
+    50% {
+        background-position:
+            10% 30%,
+            80% 30%,
+            50% 70%,
+            20% 70%,
+            75% 20%,
+            40% 40%;
+    }
+    75% {
+        background-position:
+            5% 25%,
+            85% 35%,
+            45% 65%,
+            15% 75%,
+            80% 15%,
+            35% 35%;
+    }
+    100% {
+        background-position:
+            10% 20%,
+            80% 40%,
+            50% 60%,
+            20% 80%,
+            75% 10%,
+            40% 30%;
+    }
+}
