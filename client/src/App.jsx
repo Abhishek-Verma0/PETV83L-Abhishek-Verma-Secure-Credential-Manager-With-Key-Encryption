@@ -23,6 +23,7 @@ import QuickLogin from "./components/QuickLogin";
 import './styles/responsive.css';
 import Chatbot from "./components/Chatbot";
 import BackToTopButton from "./components/BackToTopButton";
+import BackToBottomButton from "./components/BackToBottomButton";
 
 const App = () => {
   // Initialize theme on app load
@@ -96,23 +97,11 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/test-qr"
-              element={<QRCodeTest />}
-            />
-            <Route
-              path="/simple-qr"
-              element={<SimpleQRTest />}
-            />
-            <Route
-              path="/mfa-test"
-              element={<MFATestPage />}
-            />
-            <Route
-              path="/quick-login"
-              element={<QuickLogin />}
-            />
-            {/* redirecting all unknown route to dashboard if logged in  if not logged in redirect to landing */}
+            <Route path="/test-qr" element={<QRCodeTest />} />
+            <Route path="/simple-qr" element={<SimpleQRTest />} />
+            <Route path="/mfa-test" element={<MFATestPage />} />
+            <Route path="/quick-login" element={<QuickLogin />} />
+            {/* redirecting all unknown routes */}
             <Route
               path="*"
               element={
@@ -122,8 +111,11 @@ const App = () => {
               }
             />
           </Routes>
-           {/* <-- Floating Back to Top button for all pages --> */}
+
+          {/* Floating navigation buttons */}
+          <BackToBottomButton />
           <BackToTopButton />
+
           <Chatbot />
         </div>
       </AuthProvider>
