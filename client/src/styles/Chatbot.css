@@ -60,7 +60,7 @@ body.light-theme {
 ----------------------------------- */
 .chatbot-container {
   position: fixed;
-  bottom: 80px; /* MODIFIED: Increased from 60px to shift button up */
+  bottom: 40px; /* MODIFIED: Increased from 60px to shift button up */
   left: 25px;
   z-index: 1000;
   font-size: 15px;
