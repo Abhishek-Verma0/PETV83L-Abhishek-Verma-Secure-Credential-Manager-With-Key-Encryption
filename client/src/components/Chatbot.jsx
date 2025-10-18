@@ -202,8 +202,17 @@ const Chatbot = () => {
       )}
 
       <button className="chatbot-toggle-btn" onClick={toggleChat}>
-        🤖
-      </button>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="#ffffff"
+    width="36px"
+    height="36px"
+    className="chatbot-icon"
+  >
+    <path d="M20,2H4C2.897,2,2,2.897,2,4v12c0,1.103,0.897,2,2,2h4v4l5.414-4H20c1.103,0,2-0.897,2-2V4C22,2.897,21.103,2,20,2z M12,12 c0.553,0,1-0.447,1-1V9c0-0.553-0.447-1-1-1s-1,0.447-1,1v2C11,11.553,11.447,12,12,12z M15,12c0.553,0,1-0.447,1-1V9c0-0.553-0.447-1-1-1 s-1,0.447-1,1v2C14,11.553,14.447,12,15,12z"/>
+  </svg>
+</button>
     </div>
   );
 };
